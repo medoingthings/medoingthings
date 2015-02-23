@@ -1,4 +1,4 @@
-# Documentation for www.leadership-digitale-kommunikation.de
+# Documentation for medoingthings.com
 
 ## Getting Started
 Make sure [Node](nodejs.org) is installed on your machine.
