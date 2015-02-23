@@ -1,0 +1,97 @@
+/**
+ * Navigation
+ * Elements for navigation
+ *
+ * Types
+ *
+ ** nav       | Global nav styles
+ ** navigation-main__ | Big main navigation
+ *
+ */
+
+
+/**
+ * Big main navigation
+ */
+
+.navigation-main__wrapper {
+    @extend %container;
+    @extend %clearfix;
+    position: absolute;
+    padding-top: em(48);
+}
+
+.navigation-main__list {
+    display: inline-block;
+}
+
+.navigation-main__link {
+    display: block;
+    clear: both;
+    font: normal size(2) Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    text-decoration: none;
+    color: color(3, $colors-bw);
+    text-align: right;
+    transform-style: preserve-3d;
+    perspective: 200px;
+    box-shadow: none !important;
+
+    > .first,
+    > .last {
+        display: inline-block;
+        transition: 0.3s transform ease, 0.2s opacity ease-out;
+        opacity: 0;
+    }
+}
+
+// inactive state
+.navigation-main__link > .first,
+.navigation-main__list:hover .is-active > .first {
+    transform: rotateY(-90deg) translateZ(-20px);
+    transform-origin: 100%;
+    opacity: 0;
+}
+
+.navigation-main__link > .last,
+.navigation-main__list:hover .is-active > .last {
+    transform: rotateY(90deg) translateZ(-20px);
+    transform-origin: 0;
+    opacity: 0;
+}
+
+// active state
+.navigation-main__link.is-active,
+.navigation-main__list .navigation-main__link:hover,
+.navigation-main__list .navigation-main__link:focus {
+
+    > .first,
+    > .last {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.navigation-main__text {
+    &.doing {
+        color: color(4);
+    }
+
+    &.writing {
+        color: color(1, $colors-writing-34);
+    }
+
+    &.sharing {
+        color: color(5);
+    }
+}
+
+@include breakpoint(0, $BP_SMARTPHONE_MAX) {
+    .navigation-main__wrapper {
+        margin: em(20) 0;
+        padding-top: em(20);
+        padding-bottom: em(20);
+        background: rgba(255, 255, 255, 0.98);
+        text-align: center;
+    }
+}

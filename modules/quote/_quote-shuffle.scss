@@ -1,0 +1,43 @@
+/**
+ * Quote Shuffle
+ * A number of quotes can be shuffled through
+ *
+ - .quote-shuffle  | A click on a button shows the next quote in a circle
+ */
+
+.quote-shuffle__list {
+    background-color: rgba(255, 255, 255, 0.98);
+    position: relative;
+    width: em(400);
+    height: em(400);
+    padding: 0;
+    border-radius: em(200);
+}
+
+.quote-shuffle__item {
+    display: table;
+    position: absolute;
+    height: 100%;
+    padding: 5% 10%;
+    font-size: size(2);
+    line-height: lineHeight(2);
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8) rotate(360deg);
+    transition: all 1s ease;
+
+    p {
+        display: table-cell;
+        vertical-align: middle;
+        margin-bottom: 0;
+    }
+
+    &._is-visible {
+        opacity: 0.9;
+        transform: scale(1);
+
+        visibility: visible;
+        z-index: 1;
+    }
+}

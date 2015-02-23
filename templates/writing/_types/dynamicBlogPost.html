@@ -1,0 +1,51 @@
+{#
+ # Richtext Article
+ #}
+
+{% extends "_default" %}
+{% set classId = "article-" ~ entry.id %}
+{% set pageClass = classId ~ '__wrapper' %} {# unique page class #}
+
+{% block content %}
+<div class="row__wrapper">
+    <section class="row-triangle__wrapper">
+        <article class="row-triangle__content {{ classId }}__content">
+
+            <ul class="quote-shuffle__list">
+
+                {# quick interins solution for random reasons #}
+                {% set reasons = [
+
+                    "<em>Other</em> people are smarter.",
+                    "<em>I don't</em> have the time.",
+                    "<em>Why</em> would anyone read my stuff?",
+                    "<em>I have</em> nothing to say."
+
+                ] %}
+
+                <li class="quote-shuffle__item _is-visible">
+                    <p>
+                        {{ random(reasons) | raw }}
+                    </p>
+                </li>
+            </ul>
+
+            {% include "writing/_fields/matrix-dynamicBlogPost" %}
+
+            <div class="dqs">
+                {% include "_disqus" %}
+            </div>
+
+        </article>
+
+
+        <div class="row-triangle__background">
+            <svg x="0px" y="0px" width="1812px" height="1652px" viewBox="0 0 1812 1652">
+                <path fill="#ffffff" d="M1811.746,0.993l-762.383,1650.013L1.242,165.923L1811.746,0.993z"/>
+            </svg>
+        </div>
+    </section>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+/**
+ * Align sharing widgets from Twitter and Facebook
+ */
+
+.social-share__text {
+    max-width: em(380);
+    color: color(2);
+    float: left;
+}
+
+.social-share__list {
+    padding-top: em(10);
+    display: inline-block;
+    margin-left: em(40);
+}
+
+.social-share__item {
+    margin-bottom: em(10);
+}
+
+@include breakpoint(false, $BP_TABLET_MAX) {
+    .social-share__list {
+        margin-left: 0;
+    }
+}

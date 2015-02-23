@@ -1,0 +1,25 @@
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+}
+
+// used for svg text with rotating polygons inside
+@keyframes rotateInnerPly {
+    0% {
+        transform: rotate(0deg) translateY(-50%);
+    }
+    100% {
+        transform: rotate(360deg) translateY(-50%);
+    }
+}
+
+
+
+// used for buttons in .sfl_hdtx
+@keyframes scaleIn {
+    from {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

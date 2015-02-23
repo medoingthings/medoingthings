@@ -1,0 +1,170 @@
+/**
+ * Functions
+ *
+ * baselineMargin()
+ * color()
+ * em()
+ * lineHeight()
+ * path()
+ * rem()
+ * size()
+ * stripUnit()
+ */
+
+/**
+ * baselineMargin($font-size, $line-height[, $offset])
+ * Returns a margin in em considering the baseline grid
+ *
+ * @param  {String} $font-size Font size in em
+ * @param  {Number} $line-height
+ * @param  {Number} $offset Make n times more room, based on baseline grid
+ * @return {String} Margin in em, based on baseline grid
+ */
+
+@function baselineMargin($font-size, $line-height, $offset: 0) {
+
+    // convertig em font size back to pixels for better calculating
+    $this-height: $font-size * $em-base;
+    $this-height: stripUnit($this-height);
+
+    // total height in px without unit
+    $this-height: $this-height * $line-height;
+
+    // calculate baseline height (see variables.scss for $em-base)
+    $base-height: $em-base;
+
+    // base height in px without unit
+    $base-height: $base-height * lineHeight($font-size-base);
+
+    // the difference between both heights as positive number
+    $difference: abs($this-height - $base-height);
+
+    // return in ems, add given offset
+    @return em($difference + $offset * $base-height, $font-size);
+}
+
+
+/**
+ * color($key[, $color-scheme])
+ * Returns a #hex color value from a color scheme defined in variables.scss
+ *
+ * @param {Integer} $key
+ * @param {Array} $color-scheme Optional
+ * @return {String} color as #hex value
+ *
+ */
+
+@function color($key, $color-scheme: $colors-default) {
+    @return nth($color-scheme, $key);
+}
+
+
+/**
+ * em($pixel[, $base])
+ * Calculates and returns an em value based on pixel input
+ *
+ * @param {Integer} $pixel
+ * @param {String} $base Optional em value to get the right scope
+ * @return {String} em value
+ *
+ */
+
+@function em($pixel, $base: false) {
+
+    @if ($base != false) {
+
+        // Calculate pixel base
+        $pixel-base: stripUnit($base * $em-base);
+
+        @return $pixel / $pixel-base * 1em;
+
+    } @else {
+
+        @return $pixel / $em-base * 1em;
+    }
+}
+
+
+/**
+ * lineHeigt($key[, $height-scheme])
+ * Returns a line-height from a given height-scheme defined in variables.scss
+ *
+ * @param {Integer} $key
+ * @param {Array} $height-scheme Optional
+ * @return {Integer} line-height value
+ *
+ */
+
+@function lineHeight($key, $height-scheme: $line-height-default) {
+
+    // convert px to rem
+    $line-height: nth($height-scheme, $key);
+
+    // return value
+    @return $line-height;
+}
+
+
+/**
+ * path($file[, $prepend-path])
+ * Returns a background image path
+ *
+ * @param {String} $file File located within $prepend-path variable
+ * @param {String} $prepend-path Optional path to prepended the filename
+ * @return {String} CSS background url path e.g. url('path/to/file.svg')
+ *
+ */
+
+@function path($file: "filename missing", $prepend-path: $layout-path) {
+    @return url("#{$prepend-path}#{$file}");
+}
+
+
+/**
+ * rem($pixel)
+ * Calculates and returns a rem value based on pixel input
+ *
+ * @param  {Integer} $pixel
+ * @return {String} rem value
+ *
+ */
+
+@function rem($pixel) {
+    @return $pixel / 16 * 1rem;
+}
+
+
+/**
+ * size($key[, $size-scheme])
+ * Returns the font-size in rem from a given size-scheme defined in variables.scss
+ *
+ * @param {Integer} $key
+ * @param {Array} $size-scheme Optional
+ * @return {String} font-size in rem
+ *
+ */
+
+@function size($key, $size-scheme: $size-default) {
+
+    // convert px to rem
+    $font-size: nth($size-scheme, $key) / $em-base * 1em;
+
+    // return value
+    @return $font-size;
+}
+
+
+/**
+ * stripUnit($val)
+ * Returns the number without unit. E.g. 30px -> 30
+ *
+ * @param  {String} $val
+ * @return {Number}
+ */
+
+@function stripUnit($val) {
+
+    // Borrowed from Zurb Foundation _globals.scss
+    @return $val / ($val * 0 + 1);
+}
+

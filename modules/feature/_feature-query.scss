@@ -1,0 +1,212 @@
+/**
+ * Shuffle headline text
+ * Big headline on the left, text on the right, lots of questions
+ */
+
+.feature-query__wrapper {
+    margin: 0 auto;
+    max-width: em(600);
+    padding: em(120) 0 0;
+}
+
+.feature-query__content {
+    position: relative;
+    min-height: em(280);
+    animation: 0.7s scaleIn ease-out backwards;
+}
+
+#feature-query__TplNext {
+    display: none;
+}
+
+// hide initially to prevent FOUC
+.js {
+    .feature-query__content:nth-of-type(1n+2) {
+        display: none;
+    }
+}
+
+.no-js {
+    .feature-query__content {
+        display: none;
+
+        &.is-nojs-only {
+            display: block;
+        }
+    }
+}
+
+.feature-query__headline {
+    text-align: center;
+    margin-bottom: em(20);
+
+    h2 {
+        font-size: size(1);
+        line-height: 1;
+        color: color(2, $colors-bw);
+        margin-bottom: 0;
+    }
+
+    &._is-inactive {
+        display: none;
+    }
+}
+
+.feature-query__response {
+    @extend %clearfix;
+    display: none;
+    margin-bottom: em(20);
+
+    ._response {
+        display: none;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        &._is-active {
+            animation: 0.7s scaleIn ease-out backwards;
+        }
+    }
+
+    &._is-active,
+    ._is-active {
+        display: block;
+    }
+
+    ._response-yes aside {
+        color: color(2);
+    }
+
+    ._response-no aside {
+        color: color(5);
+    }
+
+    // response content
+    aside {
+        float: left;
+        color: color(2, $colors-bw);
+        width: em(140);
+        height: em(140);
+        border-radius: 70px;
+        padding-top: em(30);
+        color: color(1);
+        text-align: center;
+        background-color: color(2, $colors-bw);
+
+        .p {
+            display: block;
+            font-size: size(2);
+            font-weight: 200;
+            line-height: 1;
+            white-space: nowrap;
+            margin-bottom: em(5, size(2));
+        }
+
+        .t {
+            display: block;
+            font-size: size(5);
+            line-height: lineHeight(5);
+            padding: 0 em(20);
+        }
+    }
+
+    article {
+        padding-top: em(15);
+        padding-left: em(140 + 20, size(4));
+        font-size: size(4);
+        line-height: lineHeight(4);
+    }
+}
+
+.feature-query__answer {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-query__answer__link {
+    display: block;
+    width: 49.8%;
+    text-align: center;
+    text-decoration: none !important;
+    color: color(2, $colors-bw);
+    font-weight: 200;
+    font-size: size(3);
+    padding: em(5) em(10);
+    transition: 0.2s all ease;
+    transform-origin: 50% 0;
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &._answer-yes {
+        float: left;
+        @include link-style(color(2));
+        color: color(2);
+
+        &:hover {
+            @include link-style(color(2), true);
+        }
+    }
+
+    &._answer-no {
+        float: right;
+        color: color(5);
+        @include link-style(color(5));
+
+        &:hover {
+            @include link-style(color(5), true);
+        }
+    }
+
+    &._answer-more {
+        width: 100%;
+        color: color(1, $colors-bw);
+        @include link-style(color(2, $colors-bw));
+
+        &:hover {
+            @include link-style(color(2, $colors-bw), true);
+        }
+    }
+}
+
+.feature-query__svg {
+    display: block;
+    height: 1em; // limit height of svg to font height
+
+    svg {
+        width: 100%;
+        pointer-events: none; // firefox need this
+    }
+
+    path {
+        animation: rotateInnerPly 20s ease 1;
+        transform-origin: 70% 30%;
+    }
+
+    rect {
+        fill: color(2, $colors-bw);
+    }
+}
+
+@include breakpoint(false, $BP_SMARTPHONE_MAX) {
+
+    .feature-query__wrapper {
+        padding-top: em(120, size(2));
+    }
+
+    .feature-query__content {
+        min-height: em(160);
+    }
+
+    .feature-query__headline h2 {
+        font-size: size(2);
+        line-height: lineHeight(2);
+    }
+
+    .feature-query__answer {
+        font-size: size(5);
+    }
+}

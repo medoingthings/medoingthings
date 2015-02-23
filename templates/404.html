@@ -1,0 +1,36 @@
+{#
+ # 404 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 404 page working; you just need to call it 404.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_default" %}
+{% set title = "404" %}
+{% set pageClass = "lyt_writing" %}
+
+{% block content %}
+    <section class="row-triangle__wrapper">
+        <div class="row-triangle__content">
+
+            <h1>Whoopie - not found :(</h1>
+            <p>Sorry for not having a more delightful error page right now. There will be one – promise!</p>
+            <p><a href="{{ siteUrl }}">Go back to home</a></p>
+
+        </div>
+
+
+    </section>
+
+{% endblock content %}

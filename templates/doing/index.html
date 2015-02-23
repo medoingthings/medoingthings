@@ -1,0 +1,220 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_default" %}
+{% set pageClass = "layout-doing__wrapper" %}
+
+{% block content %}
+
+    <section class="row__wrapper">
+        <section class="feature-query__wrapper">
+
+            {#
+             # JavaScript enhanced part
+             #}
+            <div id="feature-query__TplNext">
+                <a href="#" class="feature-query__answer__link _answer-more">
+                    Only %x more question%s...
+                </a>
+            </div>
+
+            {% set blocks = entry.ixShuffleHeadline.type("journey") %}
+            {% set i = 0 %}
+
+            {% if blocks | length %}
+
+                {% for block in blocks %}
+
+                    {% set i = i + 1 %}
+
+                    <article class="feature-query__content" data-id="{{ block.id }}" data-nth="{{ i }}" data-last="{{ blocks | length }}">
+                        <div class="feature-query__headline">
+                            <h2>
+                                {{ block.headline1 }}
+                                <span class="feature-query__svg">
+                                    <svg>
+                                        <defs>
+                                            <pattern id="feature-query__svg-Bg-{{ i }}" patternUnits="userSpaceOnUse" width="400" height="400" >
+                                                <rect x="0" y="0" fill="#01f0a7" width="785" height="551"/>
+                                                <path fill="#6dc5e6" d="M142.557,173.192L224.921,0.309L333.46,158.08L142.557,173.192z"/>
+                                                <path fill="#ff00cc" d="M216.179,264.117L0.5,121.149L231.998,5.615L216.179,264.117z"/>
+                                            </pattern>
+                                        </defs>
+                                        <text dy="0.8em" text-anchor="middle" x="50%" fill="url(#feature-query__svg-Bg-{{ i }})">{{ block.headline2 }}</text>
+                                    </svg>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="feature-query__response">
+                            <div class="_response _response-yes">
+                                <aside>
+                                    <span class="p">?%</span>
+                                    <span class="t">agree with you</span>
+                                </aside>
+                                <article>
+                                    {{ block.responseYes }}
+                                </article>
+                            </div>
+                            <div class="_response _response-no">
+                                <aside>
+                                    <span class="p">?%</span>
+                                    <span class="t">agree with you</span>
+                                </aside>
+                                <article>
+                                    {{ block.responseNo }}
+                                </article>
+                            </div>
+                        </div>
+                        <div class="feature-query__answer">
+                            <a href="#" class="feature-query__answer__link _answer-yes">
+                                <span>{{ block.answerYes }}</span>
+                            </a>
+                            <a href="#" class="feature-query__answer__link _answer-no">
+                                <span>{{ block.answerNo }}</span>
+                            </a>
+                        </div>
+                    </article>
+
+                {% endfor %}
+            {% endif %}
+
+            {#
+             # Show message when JavaScript is disabled
+             #}
+
+            {% set blocks = entry.ixShuffleHeadline.type("nojsMessage") %}
+            {% set i = 0 %}
+
+            {% if blocks | length %}
+
+                {% for block in blocks %}
+
+                    {% set i = i + 1 %}
+
+                    <article class="feature-query__content is-nojs-only">
+                        <div class="feature-query__headline">
+                            <h2>
+                                {{ block.nojsHeadline1 }}
+                                <span class="feature-query__svg">
+                                    <svg>
+                                        <defs>
+                                            <pattern id="feature-query__svg-Bg" patternUnits="userSpaceOnUse" width="400" height="400" >
+                                                <rect x="0" y="0" fill="#01f0a7" width="785" height="551"/>
+                                                <path fill="#6dc5e6" d="M142.557,173.192L224.921,0.309L333.46,158.08L142.557,173.192z"/>
+                                                <path fill="#ff00cc" d="M216.179,264.117L0.5,121.149L231.998,5.615L216.179,264.117z"/>
+                                            </pattern>
+                                        </defs>
+                                        <text dy="0.8em" text-anchor="middle" x="50%" fill="url(#feature-query__svg-Bg)">{{ block.nojsHeadline2 }}</text>
+                                    </svg>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="feature-query__text">
+                            {{ block.nojsText }}
+                        </div>
+                    </article>
+
+                {% endfor %}
+            {% endif %}
+
+        </section>
+    </section>
+
+    <section class="row__wrapper feature-words">
+
+        {% set blocks = entry.ixWordReveal %}
+
+            <section class="feature-words__wrapper">
+
+                <article class="feature-words__content">
+                        <h2 class="feature-words__headline">
+                            <svg width="100">
+                                <defs>
+                                    <pattern id="feature-words-P1" patternUnits="userSpaceOnUse" width="400" height="400" >
+                                        <rect x="0" y="0" fill="#32cc66" width="785.843" height="550"/>
+                                        <path fill="#33CC66" d="M143.821,174.441L226.186,1.559L334.724,159.33L143.821,174.441z"/>
+                                        <path fill="#35A62D" d="M553.254,70.334L365.493,299.866l-104.73-277.51L553.254,70.334z"/>
+                                        <path fill="#FFCF4C" d="M217.444,265.366L1.765,122.399L233.263,6.864L217.444,265.366z"/>
+                                    </pattern>
+                                </defs>
+                                <text dy="0.75em">
+
+                                    {% spaceless %}
+                                        {% if blocks | length %}
+
+                                            {% for block in blocks %}
+
+                                                <a xlink:href="#whodoingwhat" class="feature-words__link{% if block.id == blocks.first().id %} _is-active {% endif %}" fill="url(#feature-words-P1)"><tspan>{{ block.headlineSnippet }}</tspan></a>
+
+                                            {% endfor %}
+
+                                        {% endif %}
+                                    {% endspaceless %}
+                                </text>
+                            </svg>
+                        </h2>
+                        {% if blocks | length %}
+
+                            {% for block in blocks %}
+
+                                <div class="feature-words__text{% if block.id == blocks.first().id %} _is-active {% endif %}">
+                                    {{ block.contentSnippet }}
+                                </div>
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                </article>
+                <article class="feature-words__content">
+                    <div class="social-share__wrapper">
+                        <p class="social-share__text">It‘s a bit early to tell exactly what is going to happen here. But if you‘re curious – follow me...</p>
+                        <div class="social-share__list">
+                            <div class="social-share__item">
+                                <a href="https://twitter.com/medoingthings" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @medoingthings</a>
+                            </div>
+
+                            <div class="social-share__item">
+                                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffacebook.com%2Fmedoingthings&amp;width=250&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:80px;" allowTransparency="true"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <div class="feature-words__background">
+                    <svg width="1580" height="1440" viewBox="0 0 1580 1440" preserveAspectRatio="xMinYMin">
+                        <title>Mark Rickert staring into the camera</title>
+                        <defs>
+                            <clipPath id="feature-words-Triangle">
+                                <polygon points="0 144, 1580 0, 910 1440"/>
+                            </clipPath>
+                            <clipPath id="feature-words-Image">
+                                <polygon points="0 144, 500 95, 250 500"/>
+                            </clipPath>
+                        </defs>
+                        <polygon fill="#ffffff" points="0 144, 1580 0, 910 1440"/>
+                        <g clip-path="url(#feature-words-Triangle)">
+                            <image clip-path="url(#feature-words-Image)" x="-20" y="90" width="500" height="424" xlink:href="/img/content/mark-rickert-portrait.jpg"></image>
+                        </g>
+                    </svg>
+                </div>
+            </section>
+
+    </section>
+
+{% endblock content %}

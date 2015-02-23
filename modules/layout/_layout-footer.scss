@@ -1,0 +1,26 @@
+/**
+ * Layout for the Footer
+ */
+
+.layout-footer__wrapper {
+    position: relative;
+    overflow: hidden; // clearfix
+    z-index: 1;
+}
+
+.layout-footer__list {
+    float: right;
+    margin: em(10);
+    text-align: right;
+}
+
+.layout-footer__item {
+    font-size: size(5);
+    margin-left: em(10);
+    float: left;
+}
+
+.layout-footer__link {
+    color: color(4) !important;
+    padding: em(5);
+}

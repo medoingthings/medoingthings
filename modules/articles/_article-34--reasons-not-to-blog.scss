@@ -1,0 +1,205 @@
+/**
+ * Unique styles per article in /writing/*
+ * Any article gets a unique class refering to the articles id
+ *
+ - .article-34  | Reasons Not to Blog
+ */
+
+/*
+ * 34: Reasons Not to Blog
+ */
+
+.article-34__wrapper {
+    .layout__content {
+        margin-top: em(228);
+    }
+
+    .row-triangle__background path {
+        opacity: 0.98;
+        transform: rotate(9deg);
+    }
+
+    .row-triangle__content {
+        padding-top: em(200);
+    }
+
+    .layout-triangle__item-1,
+    .layout-triangle__item-3 {
+        transform: translate(442px, 853px) rotate(-66deg);
+        fill: color(4, $colors-writing-34);
+    }
+
+    .layout-triangle__item-2 {
+        transform: translate(446px, 715px) rotate(-60deg);
+        fill: color(2, $colors-bw);
+        opacity: 0.2;
+    }
+
+    .layout-triangle__item-3 {
+        transform: translate(334px, 713px) rotate(-50deg);
+        opacity: 1;
+    }
+
+    .layout-triangle__item-4 {
+        transform: translate(231px, 700px) rotate(-42deg);
+        fill: color(1, $colors-writing-34);
+    }
+}
+
+.no-flexbox .article-34__content {
+    .richtext__intro__wrapper {
+        margin: 0 auto;
+        max-width: em(580);
+    }
+
+    .richtext__intro__headline {
+        text-align: left;
+    }
+}
+
+.article-34__content {
+    .quote-shuffle__list {
+        position: absolute;
+        top: em(-60);
+        right: 8%;
+    }
+
+    .quote-shuffle__item em {
+        font-family: $font-family-serif;
+        color: color(1, $colors-writing-34);
+    }
+
+    // rich text stuff
+    .richtext__intro__wrapper {
+        display: flex;
+        justify-content: center;
+
+        // make sure the content ist above quote-shuffle
+        position: relative;
+        z-index: 1;
+    }
+
+    .richtext__intro__headline {
+        flex-basis: em(380);
+        margin-right: em(40);
+        text-align: right;
+    }
+
+    .richtext__quote {
+        color: color(4, $colors-writing-34);
+    }
+
+    .richtext__blob__wrapper {
+        max-width: em(580);
+        margin: 0 auto;
+    }
+
+    // Voting Buttons
+    .richtext__vote__item:nth-child(1) {
+        color: color(4, $colors-writing-34);
+
+        button {
+
+            &:after {
+                background-color: darken(color(4, $colors-writing-34), 5%);
+            }
+
+            &:before {
+                border-color: color(4, $colors-writing-34);
+            }
+        }
+    }
+
+    .richtext__vote__item:nth-child(2) {
+        color: color(2, $colors-writing-34);
+
+        button {
+
+            &:after {
+                background-color: color(2, $colors-writing-34);
+            }
+
+            &:before {
+                border-color: color(1, $colors-writing-34);
+            }
+        }
+    }
+
+    .richtext__vote__item.is-inactive {
+        color: color(4, $colors-bw);
+
+        button {
+
+            &:after {
+                background-color: darken(color(4, $colors-bw), 5%);
+            }
+
+            &:before {
+                border-color: color(4, $colors-bw);
+            }
+        }
+    }
+
+
+    a {
+
+        &:link,
+        &:active,
+        &:visited {
+            @include link-style(color(4, $colors-writing-34));
+        }
+
+        &:hover {
+            @include link-style(color(4, $colors-writing-34), true);
+        }
+    }
+
+    h1 em,
+    h2 em,
+    h3 {
+        font-family: $font-family-serif;
+        font-style: italic;
+    }
+
+    h1 {
+        margin-bottom: 0;
+
+        em {
+            color: color(1, $colors-writing-34);
+        }
+    }
+
+    h2 {
+        em {
+            color: color(4, $colors-writing-34);
+        }
+    }
+
+    h3 {
+        color: color(4, $colors-writing-34);
+    }
+}
+
+
+
+@include breakpoint(0, $BP_TABLET_MAX) {
+    .article-34__content {
+        .richtext__intro__wrapper {
+            display: block;
+        }
+
+        .richtext__intro__headline {
+            text-align: left;
+        }
+    }
+}
+
+@include breakpoint(false, $BP_SMARTPHONE_MAX) {
+    .article-34__content {
+        .quote-shuffle-list {
+            font-size: 80%;
+            top: 0;
+        }
+    }
+}
+

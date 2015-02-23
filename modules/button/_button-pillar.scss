@@ -1,0 +1,87 @@
+/*
+ * Button Pillar
+ *
+ * A cylindric button that can be shown at different heights after clicking.
+ * Useful for votings for example.
+ *
+ */
+
+.button-pillar {
+    position: relative;
+    top: 0; // important to make the transition work
+    display: block;
+    width: em(80);
+    height: em(80);
+    padding: 0; // prevent centering issues on iOS
+    overflow: visible; // otherwise IE won't show the :after-shadow
+    outline: none;
+    border-radius: em(40);
+    border: none;
+    text-align: center;
+    font-weight: 200;
+    z-index: 0;
+    // Fife different heights
+    @for $i from 1 through 5 {
+
+        $val: $i * 10;
+
+        &.h#{$val} {
+            top: em($val * -1);
+
+            &:after {
+                height: em($val + 80);
+            }
+        }
+    }
+
+    &,
+    &:after {
+        transition: top 0.1s ease;
+    }
+
+    &:enabled:active {
+        top: em(2);
+
+        &:after {
+            top: em(3);
+        }
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        border-radius: em(40);
+    }
+
+    // shadow
+    &:after {
+        top: em(5);
+        height: em(80);
+        background-color: color(4, $colors-bw);
+        z-index: -2;
+    }
+
+    // border
+    &:before {
+        top: 0;
+        height: em(80);
+        border: em(5) solid color(2);
+        background-color: color(2, $colors-bw);
+        z-index: -1;
+        transition: 0.1s border-width linear;
+    }
+
+    &:hover,
+    &:focus,
+    &:disabled {
+        color: color(2, $colors-bw);
+
+        &:before {
+            border-width: em(40);
+        }
+    }
+}

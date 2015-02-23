@@ -1,0 +1,32 @@
+
+/*
+ * Class Utilities
+ */
+
+.is-hidden {
+    display: none;
+}
+
+.js .is-nojs-only {
+    display: none;
+}
+
+.is-visually-hidden,
+.js .js-hidden,
+.no-js .no-js-hidden {
+    @extend %is-visually-hidden;
+}
+
+/*
+ * Selections
+ */
+
+::-moz-selection {
+    background: color(1);
+    color: #fff;
+}
+
+::selection {
+    background: color(1);
+    color: #fff;
+}

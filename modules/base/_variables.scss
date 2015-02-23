@@ -1,0 +1,98 @@
+// Path
+$layout-path: "../img/layout/";
+
+// Breakpoint config
+// must stay in sync with js/_config.js
+$BP_SMARTPHONE_MIN : 0;
+$BP_SMARTPHONE_MAX : 449;
+$BP_TABLET_MIN     : 450;
+$BP_TABLET_MAX     : 780;
+$BP_DESKTOP_MIN    : 781;
+$BP_DESKTOP_MAX    : 1199;
+$BP_WIDESCREEN_MIN : 1200;
+$BP_WIDESCREEN_MAX : 1500;
+// $BP_LIMIT          : 1500px;
+
+// media layouts for use with at-breakpoint compass mixin
+// $ML_SMARTPHONE            : $BP_SMARTPHONE_MIN $BP_SMARTPHONE_MAX;
+// $ML_TABLET                : $BP_TABLET_MIN $total-columns $BP_TABLET_MAX;
+// $ML_DESKTOP               : $BP_DESKTOP_MIN $total-columns $BP_DESKTOP_MAX;
+// $ML_DESKTOP_WIDESCREEN    : $BP_DESKTOP_MIN $total-columns $BP_WIDESCREEN_MAX;
+// $ML_SMARTPHONE_TABLET     : $BP_SMARTPHONE_MIN $BP_TABLET_MAX;
+// $ML_SMARTPHONE_DESKTOP    : $BP_SMARTPHONE_MIN $BP_DESKTOP_MAX;
+// $ML_SMARTPHONE_WIDESCREEN : $BP_SMARTPHONE_MIN $BP_WIDESCREEN_MAX;
+// $ML_TABLET_DESKTOP        : $BP_TABLET_MIN $total-columns $BP_DESKTOP_MAX;
+// $ML_TABLET_WIDESCREEN     : $BP_TABLET_MIN $total-columns $BP_WIDESCREEN_MAX;
+// $ML_WIDESCREEN            : $BP_WIDESCREEN_MIN $total-columns $BP_WIDESCREEN_MAX;
+// $ML_TABLET_UNLIMITED      : $BP_TABLET_MIN $total-columns;
+// $ML_DESKTOP_UNLIMITED     : $BP_DESKTOP_MIN $total-columns;
+// $ML_UNLIMITED             : $BP_LIMIT $total-columns;
+
+
+// Default colors
+$colors-default:
+    #01f0a7, // 1 | lime    | primary #1
+    #13bbe5, // 2 | blue    | primary #2
+    #fefe63, // 3 | yellow  | primary #3
+    #32cc66, // 4 | green   | primary #4
+    #a034c4, // 5 | purple  | primary #5
+    #fa5f72; // 6 | red     | action  #1
+
+// black & whites
+$colors-bw:
+    #000,    // 1 | black
+    #fff,    // 2 | white
+    #4a4a4a, // 3 | blackish | text
+    #9e9e9e, // 4 | mid gray
+    #e2e2e2, // 5 | lighter
+    #f4f4f4; // 6 | light gray
+
+$colors-writing-34:
+    #f53d53, // primary red
+    #e53e52, // red tone
+    #d53447, // red tone
+    #0be2cb; // complementary color
+
+// Typography
+$font-family-default: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:   Georgia, "Times New Roman", serif;
+
+$size-default:
+    70, // 1 | h1
+    50, // 2 | h2
+    30, // 3 | h3
+    24, // 4 | p
+    18, // 5 | ?
+    12; // 6 | ?
+
+// maps to $size-default keys
+$line-height-default:
+    1.2, // 1
+    1.2, // 2
+    1.7, // 3
+    1.7, // 4
+    1,   // 5
+    1;   // 6
+
+$size-special:
+    100, // 1 | h1
+    40;  // 2 | .feature-words
+
+// maps to $size-special keys
+$line-height-special:
+    1.2,  // 1
+    1.5;  // 2
+
+$font-size-base: 4;  // nth from size-default <int>
+$em-base       : 24; // 24px
+
+// $size-tablet:
+//     12, // 1 | ?
+//     13, // 2 | p
+//     15, // 3 | h4
+//     16, // 4 | h5
+//     18, // 5 | h4
+//     22, // 6 | h3
+//     24, // 7 | h2
+//     26; // 8 | h2
+// $size-tablet-base: 0.8125em; // 13px | body

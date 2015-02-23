@@ -1,0 +1,31 @@
+/**
+ * Content row with a big polygon as the background
+ */
+
+.row-triangle__wrapper {
+    position: relative;
+    margin-top: em(10);
+    padding-top: em(170);
+    pointer-events: none;
+}
+
+.row-triangle__content {
+    @extend %container;
+    pointer-events: auto;
+}
+
+.row-triangle__background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    svg {
+        @extend %composited-layer; // prevents rendering issue in Safari
+        position: absolute;
+        top: 0;
+        left: 56%;
+        margin-left: -1075px;
+        z-index: -1;
+
+    }
+}

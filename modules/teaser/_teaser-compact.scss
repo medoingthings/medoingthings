@@ -1,0 +1,66 @@
+/*
+ * Teasers
+ *
+ * .teaser-compact | writing overview teasers
+ */
+
+/*
+ * .teaser-compact
+ */
+
+.teaser-compact__list {
+    max-width: em(760);
+    margin: 0 auto em(100);
+    padding: 0;
+}
+
+.teaser-compact__item {
+    display: flex;
+    align-items: flex-start;
+
+    h2 {
+        margin-bottom: 0;
+
+        em {
+            font-family: $font-family-serif;
+            font-style: italic;
+            color: color(1, $colors-writing-34);
+        }
+    }
+}
+
+.teaser-compact__link {
+    display: block;
+    margin: 0 em(40) em(30) 0;
+    padding-bottom: em(10);
+}
+
+.teaser-compact__date {
+    margin-bottom: 0;
+    font-size: size(5);
+    color: color(4, $colors-bw);
+}
+
+.teaser-compact__text {
+    margin-bottom: 0;
+}
+
+@include breakpoint($BP_DESKTOP_MIN) {
+    .teaser-compact__item ._heading {
+        text-align: right;
+    }
+
+    .no-flexbox .teaser-compact__item ._heading {
+        text-align: left;
+    }
+}
+
+@include breakpoint(0, $BP_TABLET_MAX) {
+    .teaser-compact__item {
+        display: block;
+    }
+
+    .teaser-compact__link {
+        margin-right: 0;
+    }
+}

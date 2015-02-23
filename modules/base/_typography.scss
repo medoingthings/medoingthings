@@ -1,0 +1,88 @@
+/**
+ * Typography
+ */
+
+body {
+    font-family: $font-family-default;
+    font-size: $em-base / 16 * 1em; // 30px
+    line-height: lineHeight($font-size-base);
+    font-weight: 300;
+    color: color(3, $colors-bw);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 200;
+}
+
+h1 {
+    margin: 0 0 em(6 + 51, size(1));
+    font-size: size(1);
+    line-height: lineHeight(1);
+    font-weight: 200;
+    word-wrap: break-word;
+
+    &.is-indented {
+        padding-left: rem(40);
+    }
+}
+
+h2 {
+    font-size: size(2);
+    line-height: lineHeight(2);
+    margin: 0 0 baselineMargin(size(2), lineHeight(2));
+}
+
+h3 {
+    font-size: size(3);
+    line-height: lineHeight(3);
+    font-weight: 300;
+    color: color(4);
+    margin: 0 0 baselineMargin(size(3), lineHeight(3));
+}
+
+p {
+    margin: 0 0 baselineMargin(size($font-size-base), lineHeight($font-size-base), 1);
+    max-width: em(650);
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+}
+
+strong {
+
+}
+
+a {
+    &:link,
+    &:visited,
+    &:active {
+        color: inherit;
+        text-decoration: none;
+        transition: 0.3s box-shadow ease;
+        @include link-style(color(4));
+    }
+
+    &:hover {
+        @include link-style(color(4), true);
+    }
+}
+
+@include breakpoint($BP_TABLET_MIN, $BP_DESKTOP_MAX) {
+
+    body {
+        font-size: 1.375em;
+    }
+
+}
+
+@include breakpoint(false, $BP_SMARTPHONE_MAX) {
+
+    body {
+        font-size: 1.125em;
+    }
+}
+
+
