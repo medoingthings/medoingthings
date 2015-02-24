@@ -1,0 +1,15 @@
+{#
+ # Post Intro
+ # Headline and optional introduction text
+ #}
+
+<article class="richtext__intro__wrapper">
+    <div class="richtext__intro__headline">
+        {{ block.headline }}
+        <p class="richtext__intro__date" title="{{ entry.postDate }}">{{ postDate }}</p>
+    </div>
+
+    <div class="richtext__intro__text">
+        {{ block.introduction }}
+    </div>
+</article>

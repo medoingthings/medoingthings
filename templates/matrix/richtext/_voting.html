@@ -1,0 +1,25 @@
+{#
+ # Voting
+ # Simple question, simple answers
+ #}
+
+{% set options = block.options|split(',') %}
+
+<div class="richtext__voting__wrapper" data-page-id="{{ entry.id }}" data-vote-id="{{ block.id }}">
+
+    <h4 class="richtext__voting__headline">
+        {{ block.question }}
+    </h4>
+
+    <div class="richtext__voting__list">
+
+        {# Show a button for each given option #}
+        {% for option in options %}
+            <div class="richtext__voting__item">
+                <button class="button-pillar" data-vote-index="{{loop.index0}}">{{option|trim}}</button>
+                <span class="percent"></span>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>

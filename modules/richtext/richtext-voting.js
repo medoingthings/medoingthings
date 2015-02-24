@@ -8,14 +8,14 @@ define(['zeptojs', 'api-talk'], function ($, apiTalk) {
      * rate how other users voted. Values store on api.medoingthings.com.
      */
 
-    $.fn.richtextVote = function() {
+    $.fn.richtextVoting = function() {
 
         return this.each(function () {
             var self = this;
 
             self.$el           = $(this);
-            self.$btnWrapper   = self.$el.find('.richtext__vote__list');
-            self.$btnItems     = self.$el.find('.richtext__vote__item');
+            self.$btnWrapper   = self.$el.find('.richtext__voting__list');
+            self.$btnItems     = self.$el.find('.richtext__voting__item');
             self.pageId        = self.$el.data('page-id');
             self.voteId        = self.$el.data('vote-id');
             self.pageVoteId    = "dbp_vote-" + self.pageId + "" + self.voteId;

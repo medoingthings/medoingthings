@@ -1,10 +1,10 @@
-require(['zeptojs', 'modules/richtext/richtext-vote', 'modules/feature/feature-words', 'modules/feature/feature-query', 'analytics'], function ($) {
+require(['zeptojs', 'modules/richtext/richtext-voting', 'modules/feature/feature-words', 'modules/feature/feature-query', 'analytics'], function ($) {
 
     /**
      * Init modules
      */
 
-    $('.richtext__vote__wrapper').richtextVote();
+    $('.richtext__voting__wrapper').richtextVoting();
     $('.feature-query__wrapper').featureQuery();
     $('.feature-words__wrapper').featureWords();
 

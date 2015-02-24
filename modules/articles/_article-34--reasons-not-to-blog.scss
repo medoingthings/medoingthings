@@ -85,7 +85,7 @@
         text-align: right;
     }
 
-    .richtext__quote {
+    .richtext__quote__content {
         color: color(4, $colors-writing-34);
     }
 
@@ -95,7 +95,7 @@
     }
 
     // Voting Buttons
-    .richtext__vote__item:nth-child(1) {
+    .richtext__voting__item:nth-child(1) {
         color: color(4, $colors-writing-34);
 
         button {
@@ -110,7 +110,7 @@
         }
     }
 
-    .richtext__vote__item:nth-child(2) {
+    .richtext__voting__item:nth-child(2) {
         color: color(2, $colors-writing-34);
 
         button {
@@ -125,7 +125,7 @@
         }
     }
 
-    .richtext__vote__item.is-inactive {
+    .richtext__voting__item.is-inactive {
         color: color(4, $colors-bw);
 
         button {
