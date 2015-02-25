@@ -1,0 +1,20 @@
+<div class="richtext__video__wrapper">
+
+    <div class="richtext__video__container">
+
+        {% if block.platform == 'youtube' %}
+            <iframe class="richtext__video__iframe" width="560" height="315" src="https://www.youtube.com/embed/{{ block.videoId }}" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+
+        {% if block.platform == 'vimeo' %}
+            <iframe class="richtext__video__iframe" src="//player.vimeo.com/video/{{ block.videoId }}?title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        {% endif %}
+
+    </div>
+
+    {% if block.sourceTitle is not empty and block.sourceUrl is not empty %}
+        <p class="richtext__video__source">
+            Source: <a href="{{ block.sourceUrl }}" class="richtext__video__link">{{ block.sourceTitle }}</a>
+        </p>
+    {% endif %}
+</div>
