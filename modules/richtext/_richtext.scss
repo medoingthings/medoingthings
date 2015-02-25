@@ -21,6 +21,43 @@
     color: color(4, $colors-bw);
 }
 
+/**
+ * Text
+ */
+
+.richtext__intro__wrapper,
+.richtext__text__wrapper {
+    p {
+        margin: 0 0 baselineMargin(size($font-size-base), lineHeight($font-size-base), 1);
+        max-width: em(650);
+    }
+
+    h1 em,
+    h2 em,
+    h3 {
+        font-family: $font-family-serif;
+        font-style: italic;
+    }
+
+    h1 {
+        margin-bottom: 0;
+
+        em {
+            color: color(1, $colors-writing-34);
+        }
+    }
+
+    h2 {
+        em {
+            color: color(4, $colors-writing-34);
+        }
+    }
+
+    h3 {
+        color: color(4, $colors-writing-34);
+    }
+}
+
 /*
  * Quote
  */
@@ -32,12 +69,17 @@
 }
 
 .richtext__quote__content {
-    margin: 0;
+    margin: 0 0 em(20);
     font-family: $font-family-serif;
     font-size: size(2);
     line-height: lineHeight(2);
     font-style: italic;
     text-align: center;
+
+    &._long {
+        font-size: size(3);
+        text-align: left;
+    }
 }
 
 .richtext__quote__source {
@@ -47,7 +89,6 @@
         content: '– ';
     }
 }
-
 
 /*
  * Inline Voting

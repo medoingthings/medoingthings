@@ -32,10 +32,8 @@
 @import "modules/feature/feature-query";
 @import "modules/feature/feature-words";
 @import "modules/layout/layout";
-@import "modules/layout/layout-doing";
 @import "modules/layout/layout-footer";
 @import "modules/layout/layout-triangle";
-@import "modules/layout/layout-writing";
 @import "modules/navigation/navigation-main";
 @import "modules/quote/quote-shuffle";
 @import "modules/richtext/richtext";
@@ -43,6 +41,7 @@
 @import "modules/rows/row-triangle";
 @import "modules/social/social-share";
 @import "modules/teaser/teaser-compact";
+@import "modules/theme/theme-section";
 
 // Needs to be last, to make sure it can overwrite previously set styles
-@import "modules/articles/article-34--reasons-not-to-blog";
+@import "modules/theme/theme-article--34-reasons-not-to-blog";

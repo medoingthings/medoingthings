@@ -1,15 +1,8 @@
 /**
- * Unique styles per article in /writing/*
- * Any article gets a unique class refering to the articles id
- *
- - .article-34  | Reasons Not to Blog
+ * Unique Styles For: Reasons Not To Blog
  */
 
-/*
- * 34: Reasons Not to Blog
- */
-
-.article-34__wrapper {
+.theme-article--34 {
     .layout__content {
         margin-top: em(228);
     }
@@ -44,20 +37,7 @@
         transform: translate(231px, 700px) rotate(-42deg);
         fill: color(1, $colors-writing-34);
     }
-}
 
-.no-flexbox .article-34__content {
-    .richtext__intro__wrapper {
-        margin: 0 auto;
-        max-width: em(580);
-    }
-
-    .richtext__intro__headline {
-        text-align: left;
-    }
-}
-
-.article-34__content {
     .quote-shuffle__list {
         position: absolute;
         top: em(-60);
@@ -69,29 +49,8 @@
         color: color(1, $colors-writing-34);
     }
 
-    // rich text stuff
-    .richtext__intro__wrapper {
-        display: flex;
-        justify-content: center;
-
-        // make sure the content ist above quote-shuffle
-        position: relative;
-        z-index: 1;
-    }
-
-    .richtext__intro__headline {
-        flex-basis: em(380);
-        margin-right: em(40);
-        text-align: right;
-    }
-
     .richtext__quote__content {
         color: color(4, $colors-writing-34);
-    }
-
-    .richtext__blob__wrapper {
-        max-width: em(580);
-        margin: 0 auto;
     }
 
     // Voting Buttons
@@ -153,49 +112,10 @@
             @include link-style(color(4, $colors-writing-34), true);
         }
     }
-
-    h1 em,
-    h2 em,
-    h3 {
-        font-family: $font-family-serif;
-        font-style: italic;
-    }
-
-    h1 {
-        margin-bottom: 0;
-
-        em {
-            color: color(1, $colors-writing-34);
-        }
-    }
-
-    h2 {
-        em {
-            color: color(4, $colors-writing-34);
-        }
-    }
-
-    h3 {
-        color: color(4, $colors-writing-34);
-    }
-}
-
-
-
-@include breakpoint(0, $BP_TABLET_MAX) {
-    .article-34__content {
-        .richtext__intro__wrapper {
-            display: block;
-        }
-
-        .richtext__intro__headline {
-            text-align: left;
-        }
-    }
 }
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {
-    .article-34__content {
+    .theme-article--34 {
         .quote-shuffle-list {
             font-size: 80%;
             top: 0;

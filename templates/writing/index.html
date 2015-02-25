@@ -3,7 +3,9 @@
  #}
 
 {% extends "_default" %}
-{% set pageClass = "layout-writing__wrapper" %}
+
+{# Make sure the correct section class is set in the _default template #}
+{% set themeName = 'writing' %}
 
 {% block content %}
     <section class="row-triangle__wrapper">

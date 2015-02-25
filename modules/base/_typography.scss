@@ -42,8 +42,7 @@ h3 {
 }
 
 p {
-    margin: 0 0 baselineMargin(size($font-size-base), lineHeight($font-size-base), 1);
-    max-width: em(650);
+    margin: 0;
 }
 
 ul {

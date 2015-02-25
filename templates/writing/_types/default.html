@@ -4,13 +4,12 @@
  #}
 
 {% extends "_default" %}
-{% set classId = "article-" ~ entry.id %}
-{% set pageClass = classId ~ '__wrapper' %} {# unique page class #}
+{% set pageClass = 'theme-article--' ~ entry.id %} {# unique page class #}
 
 {% block content %}
 <div class="row__wrapper">
     <section class="row-triangle__wrapper">
-        <article class="row-triangle__content {{ classId }}__content">
+        <article class="row-triangle__content">
 
             {% include "matrix/richtext/index" %}
 

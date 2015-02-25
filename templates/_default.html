@@ -134,7 +134,9 @@
 -->
 {% endif %}
 
-    <section class="layout__wrapper{{ pageClass is defined ? " #{pageClass}" : "" }}">
+    {# Set a specific theme class for each section #}
+    {% set themeName = entry.section.handle|default(themeName|default('')) %}
+    <section class="layout__wrapper{{ themeName is defined ? ' theme-section--' ~ themeName }}{{ pageClass is defined ? ' ' ~ pageClass }}">
 
         <header class="navigation-main__wrapper">
             <nav class="navigation-main__list" role="navigation">

@@ -5,12 +5,16 @@
 
 <div class="richtext__quote__wrapper">
 
-    <blockquote class="richtext__quote__content">
+    <blockquote class="richtext__quote__content{{ block.quote|length > 70 ? ' _long' }}">
         {{ block.quote }}
     </blockquote>
 
     {% if block.source is not empty %}
-        <span class="richtext__quote__source">{{ block.source }}</span>
+        {% if block.sourceUrl is not empty %}
+            <a href="{{ block.sourceUrl }}" class="richtext__quote__source">{{ block.source }}</a>
+        {% else %}
+            <span class="richtext__quote__source">{{ block.source }}</span>
+        {% endif %}
     {% endif %}
 
 </div>
