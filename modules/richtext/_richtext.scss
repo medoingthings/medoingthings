@@ -10,6 +10,45 @@
  * Intro
  */
 
+.richtext__intro__wrapper {
+    display: flex;
+    justify-content: center;
+
+    // make sure the content ist above quote-shuffle
+    position: relative;
+    z-index: 1;
+}
+
+.richtext__intro__headline {
+    flex-basis: em(380);
+    margin-right: em(40);
+    text-align: right;
+
+    h1 {
+        font-size: size(2);
+        line-height: lineHeight(2);
+    }
+
+    &._large {
+
+        h1 {
+            font-size: size(1);
+            line-height: lineHeight(1);
+        }
+    }
+}
+
+.no-flexbox & {
+    .richtext__intro__wrapper {
+        margin: 0 auto;
+        max-width: em(580);
+    }
+
+    .richtext__intro__headline {
+        text-align: left;
+    }
+}
+
 .richtext__intro__text em {
 	font-size: size(3);
     line-height: lineHeight(3);
@@ -129,6 +168,51 @@
     float: left;
     margin-left: em(20);
 
+    &:nth-child(1) {
+        color: color(4, $colors-writing-34);
+
+        button {
+
+            &:after {
+                background-color: darken(color(4, $colors-writing-34), 5%);
+            }
+
+            &:before {
+                border-color: color(4, $colors-writing-34);
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        color: color(2, $colors-writing-34);
+
+        button {
+
+            &:after {
+                background-color: color(2, $colors-writing-34);
+            }
+
+            &:before {
+                border-color: color(1, $colors-writing-34);
+            }
+        }
+    }
+
+    &.is-inactive {
+        color: color(4, $colors-bw);
+
+        button {
+
+            &:after {
+                background-color: darken(color(4, $colors-bw), 5%);
+            }
+
+            &:before {
+                border-color: color(4, $colors-bw);
+            }
+        }
+    }
+
     button,
     .percent {
         color: inherit;
@@ -148,6 +232,35 @@
             opacity: 1;
         }
     }
+}
+
+/**
+ * Video Embed
+ */
+
+.richtext__video__wrapper {
+    @extend %clearfix;
+    width: 60%;
+    margin: 0 auto em(40);
+}
+
+.richtext__video__container {
+    position: relative;
+    height: 0;
+    padding-top: 100% / (16 / 9);
+}
+
+.richtext__video__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.richtext__video__source {
+    font-size: size(5);
+    float: right;
 }
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {

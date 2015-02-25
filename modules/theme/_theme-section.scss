@@ -20,33 +20,6 @@
         margin-top: em(128);
     }
 
-    .no-flexbox & {
-        .richtext__intro__wrapper {
-            margin: 0 auto;
-            max-width: em(580);
-        }
-
-        .richtext__intro__headline {
-            text-align: left;
-        }
-    }
-
-    // rich text stuff
-    .richtext__intro__wrapper {
-        display: flex;
-        justify-content: center;
-
-        // make sure the content ist above quote-shuffle
-        position: relative;
-        z-index: 1;
-    }
-
-    .richtext__intro__headline {
-        flex-basis: em(380);
-        margin-right: em(40);
-        text-align: right;
-    }
-
     .richtext__text__wrapper {
         max-width: em(580);
         margin: 0 auto;
