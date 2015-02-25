@@ -19,6 +19,7 @@
     @extend %clearfix;
     position: absolute;
     padding-top: em(48);
+    z-index: 3;
 }
 
 .navigation-main__list {
