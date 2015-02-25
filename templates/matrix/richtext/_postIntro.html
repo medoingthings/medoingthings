@@ -4,7 +4,7 @@
  #}
 
 <article class="richtext__intro__wrapper">
-    <div class="richtext__intro__headline">
+    <div class="richtext__intro__headline{{ block.headline|length < 40 ? ' _large' }}">
         {{ block.headline }}
         <p class="richtext__intro__date" title="{{ entry.postDate }}">{{ postDate }}</p>
     </div>
