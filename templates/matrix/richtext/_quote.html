@@ -3,6 +3,14 @@
  # Styles quote text
  #}
 
-<blockquote class="richtext__quote__content">
-    {{ block.quote }}
-</blockquote>
+<div class="richtext__quote__wrapper">
+
+    <blockquote class="richtext__quote__content">
+        {{ block.quote }}
+    </blockquote>
+
+    {% if block.source is not empty %}
+        <span class="richtext__quote__source">{{ block.source }}</span>
+    {% endif %}
+
+</div>

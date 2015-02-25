@@ -25,14 +25,27 @@
  * Quote
  */
 
+.richtext__quote__wrapper {
+    @extend %clearfix;
+    margin: em(95) auto;
+    max-width: em(750);
+}
+
 .richtext__quote__content {
-    margin: em(95, size(2)) auto;
+    margin: 0;
     font-family: $font-family-serif;
     font-size: size(2);
     line-height: lineHeight(2);
     font-style: italic;
     text-align: center;
-    max-width: em(750, size(2));
+}
+
+.richtext__quote__source {
+    float: right;
+
+    &:before {
+        content: '– ';
+    }
 }
 
 
