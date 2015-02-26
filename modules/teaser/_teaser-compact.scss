@@ -27,6 +27,10 @@
             color: color(1, $colors-writing-34);
         }
     }
+
+    p {
+        max-width: em(650);
+    }
 }
 
 .teaser-compact__link {
