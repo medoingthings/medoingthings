@@ -240,7 +240,6 @@
 
 .richtext__video__wrapper {
     @extend %clearfix;
-    width: 60%;
     margin: 0 auto em(40);
 }
 
@@ -261,6 +260,12 @@
 .richtext__video__source {
     font-size: size(5);
     float: right;
+}
+
+@include breakpoint($BP_WIDESCREEN_MIN) {
+    .richtext__video__wrapper {
+        width: 60%;
+    }
 }
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {
