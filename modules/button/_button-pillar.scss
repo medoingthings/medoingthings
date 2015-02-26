@@ -12,7 +12,7 @@
     display: block;
     width: em(80);
     height: em(80);
-    padding: 0; // prevent centering issues on iOS
+    padding: em(5); // prevent centering issues on iOS
     overflow: visible; // otherwise IE won't show the :after-shadow
     outline: none;
     border-radius: em(40);
