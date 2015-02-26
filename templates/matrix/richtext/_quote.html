@@ -11,7 +11,7 @@
 
     {% if block.source is not empty %}
         {% if block.sourceUrl is not empty %}
-            <a href="{{ block.sourceUrl }}" class="richtext__quote__source">{{ block.source }}</a>
+            <a href="{{ block.sourceUrl }}" target="_blank" class="richtext__quote__source">{{ block.source }}</a>
         {% else %}
             <span class="richtext__quote__source">{{ block.source }}</span>
         {% endif %}

@@ -14,7 +14,7 @@
 
     {% if block.sourceTitle is not empty and block.sourceUrl is not empty %}
         <p class="richtext__video__source">
-            Source: <a href="{{ block.sourceUrl }}" class="richtext__video__link">{{ block.sourceTitle }}</a>
+            Source: <a href="{{ block.sourceUrl }}" target="_blank" class="richtext__video__link">{{ block.sourceTitle }}</a>
         </p>
     {% endif %}
 </div>
