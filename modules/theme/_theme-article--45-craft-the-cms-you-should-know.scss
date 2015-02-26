@@ -1,0 +1,108 @@
+/**
+ * Unique Styles For: Craft – The CMS You Should Know
+ */
+
+$colors-writing-45:
+    #66f799, // Green
+    #fff200, // Yellow
+    #0be2cb, // Cyan
+    #db5b48; // Craft Color
+
+.theme-article--45 {
+    .layout-triangle__item-1 {
+        transform: translate(657px, 72px) rotate(-2deg);
+        fill: color(1, $colors-writing-45);
+    }
+
+    .layout-triangle__item-2 {
+        transform: translate(809px, 28px);
+        fill: color(2, $colors-writing-45);
+    }
+
+    .layout-triangle__item-3 {
+        transform: translate(809px, 28px);
+        fill: color(3, $colors-writing-45);
+    }
+
+    .layout-triangle__item-4 {
+        transform: translate(716px, 10px);
+        fill: color(4, $colors-writing-45);
+    }
+
+    a {
+        &:link,
+        &:active,
+        &:visited {
+            @include link-style(color(3, $colors-writing-45));
+        }
+
+        &:hover {
+            @include link-style(color(3, $colors-writing-45), true);
+        }
+    }
+
+    .richtext__intro__wrapper {
+        h1 {
+            em {
+                color: color(4, $colors-writing-45);
+            }
+        }
+    }
+
+    .richtext__text__wrapper {
+        h3 {
+            color: color(4, $colors-writing-45);
+        }
+    }
+
+    .richtext__quote__content {
+        color: color(4, $colors-writing-45);
+    }
+
+    .richtext__voting__item {
+        &:nth-child(1) {
+            color: color(4, $colors-writing-45);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(4, $colors-writing-45), 5%);
+                }
+
+                &:before {
+                    border-color: color(4, $colors-writing-45);
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            color: color(3, $colors-writing-45);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(3, $colors-writing-45), 5%);
+                }
+
+                &:before {
+                    border-color: color(3, $colors-writing-45);
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            color: color(4, $colors-bw);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(4, $colors-bw), 5%);
+                }
+
+                &:before {
+                    border-color: color(4, $colors-bw);
+                }
+            }
+        }
+    }
+}
