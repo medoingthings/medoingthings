@@ -33,7 +33,7 @@ define(['zeptojs', 'api-talk'], function ($, apiTalk) {
 
                     // update localStorage only, if the user already
                     // made a choice
-                    if (self.voteData.userChoice) {
+                    if (typeof self.voteData.userChoice === 'number') {
 
                         // write self.voteData to localStorage
                         setVoteDataLocal();
