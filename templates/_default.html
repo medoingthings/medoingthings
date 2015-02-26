@@ -9,7 +9,7 @@
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
 {% spaceless %}
-{% set headTitle = entry.title is defined and craft.request.firstSegment ? (entry.title ~ " - medoingthings.com") : siteName %}
+{% set headTitle = entry.title is defined and craft.request.firstSegment ? (entry.title) : siteName %}
 
 {% if craft.request.isAjax %}
     {% header "CraftTitle: " ~ headTitle %}
@@ -126,7 +126,8 @@
                                     \_/__/
 
 
-    Howdy. I hope you enjoy checking things out here.
+    Howdy. If you’d like to check out how things were done here, have a look at
+    https://github.com/medoingthings/medoingthings
 
     Cheers,
     Mark
