@@ -1,0 +1,22 @@
+{#
+ # Quick and dirty quote that changes on each page reload
+ #}
+
+<ul class="quote-shuffle__list">
+
+    {# quick interins solution for random reasons #}
+    {% set reasons = [
+
+        "<em>Other</em> people are smarter.",
+        "<em>I don't</em> have the time.",
+        "<em>Why</em> would anyone read my stuff?",
+        "<em>I have</em> nothing to say."
+
+    ] %}
+
+    <li class="quote-shuffle__item _is-visible">
+        <p>
+            {{ random(reasons) | raw }}
+        </p>
+    </li>
+</ul>

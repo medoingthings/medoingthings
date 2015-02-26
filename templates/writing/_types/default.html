@@ -11,9 +11,14 @@
     <section class="row-triangle__wrapper">
         <article class="row-triangle__content">
 
-            {% include "matrix/richtext/index" %}
+            {# A way to prepend custom, article specific markup by simply adding a template file #}
+            {% include 'writing/article-partials/' ~ entry.id ~ '--header-prepend' ignore missing %}
 
-            {% include "_disqus" %}
+            {# Richtext Matrix field #}
+            {% include 'matrix/richtext/index' %}
+
+            {# Comment section #}
+            {% include '_disqus' %}
 
         </article>
 
