@@ -77,10 +77,7 @@ gulp.task('modernizr', function () {
 
 gulp.task('sass', function () {
     gulp.src(gulpconfig.sass.modules)
-        .pipe(sass({
-            outputStyle : 'compressed',
-            errLogToConsole: true
-        }))
+        .pipe(sass(gulpconfig.sass.options))
         .pipe(autoprefixer(gulpconfig.autoprefixer))
         .pipe(gulp.dest(gulpconfig.css.dest));
 });

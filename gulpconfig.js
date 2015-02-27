@@ -30,7 +30,11 @@ module.exports = {
         }
     },
     sass: {
-        modules: 'modules/**/*.scss'
+        modules: 'modules/**/*.scss',
+        options: {
+            outputStyle : 'compressed',
+            errLogToConsole: true
+        }
     },
     templates: {
         src: 'templates/**/*.html',
