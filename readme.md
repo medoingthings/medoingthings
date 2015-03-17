@@ -1,5 +1,7 @@
 # Documentation for medoingthings.com
 
+[ ![Codeship Status for medoingthings/medoingthings](https://codeship.com/projects/704912e0-a0fa-0132-88eb-02e47b219034/status?branch=master)](https://codeship.com/projects/65577)
+
 ## Getting Started
 Make sure [Node](nodejs.org) is installed on your machine.
 
