@@ -15,8 +15,8 @@ var uglify       = require('gulp-uglify');
  * Gulp Build Tasks
  */
 
-gulp.task('default', ['sass', 'templates', 'javascript']);
-gulp.task('build', ['assets', 'modernizr', 'sass', 'templates', 'javascript']);
+gulp.task('default', ['copy', 'sass', 'templates', 'javascript']);
+gulp.task('build', ['default', 'assets', 'modernizr']);
 
 /**
  * Gulp Tasks
@@ -26,6 +26,11 @@ gulp.task('build', ['assets', 'modernizr', 'sass', 'templates', 'javascript']);
 gulp.task('assets', function () {
   gulp.src(gulpconfig.assets.src)
     .pipe(gulp.dest(gulpconfig.assets.dest))
+});
+
+gulp.task('copy', function () {
+  gulp.src(gulpconfig.copy.js.src)
+    .pipe(gulp.dest(gulpconfig.copy.js.dest))
 });
 
 gulp.task('javascript', function() {

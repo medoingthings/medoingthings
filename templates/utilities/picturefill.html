@@ -1,0 +1,51 @@
+{#
+ # Picturefill Utility to create responsive images
+ #
+ # Usage:
+ # {% include 'utilities/picturefill' with {
+ #    imageModel: image,
+ #    imageSet: [
+ #        [[transformName], [breakpoint], [retina factor]]
+ #        ['transformNameL', '1200px', '1.5x'],
+ #        ['transformNameM', '1000px'],
+ #        ['transformNameS', '800px'],
+ #        ['transformNameM', 'noscript'],
+ #        ['transformNameForDefaultImage']
+ #    ]
+ #  %}
+ #}
+
+<picture>
+
+    {% set noscriptImageUrl = '' %}
+    {% set defaultImageUrl  = '' %}
+    {% set altText          = imageModel.altText ? imageModel.altText : imageModel.title %}
+
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+
+    {% for item in imageSet %}
+        {% set imageUrl = imageModel.getUrl(attribute(item, 0)) %}
+        {% set view     = attribute(item, 1)|default(null) %}
+        {% set retina   = attribute(item, 2)|default(null) %}
+
+        {% if view == 'noscript' %}
+            {% set noscriptImageUrl = imageUrl %}
+        {% elseif imageUrl and view %}
+            <source srcset="{{ imageUrl }}{{ retina ? ' ' ~ retina }}" media="(min-width: {{ view }}">
+        {% else %}
+            {% set defaultImageUrl = imageUrl %}
+        {% endif %}
+    {% endfor %}
+
+    <!--[if IE 9]></video><![endif]-->
+
+    {% if defaultImageUrl is not empty %}
+        <img srcset="{{ defaultImageUrl }}" alt="{{ altText }}">
+    {% endif %}
+
+    {% if noscriptImageUrl is not empty %}
+    <noscript>
+        <img src="{{ noscriptImageUrl }}" alt="{{ altText }}">
+    </noscript>
+    {% endif %}
+</picture>

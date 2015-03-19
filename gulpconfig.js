@@ -11,6 +11,14 @@ module.exports = {
         browsers: ['last 4 versions'],
         cascade: false
     },
+    copy: {
+        js: {
+            src: [
+                'bower_components/picturefill/dist/picturefill.min.js'
+            ],
+            dest: 'www/public/dist/js'
+        }
+    },
     css: {
         dest: './www/public/dist/css'
     },

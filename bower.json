@@ -8,11 +8,12 @@
   "homepage": "http://medoingthings.com",
   "private": true,
   "ignore": [],
-  "dependencies": {
+  "devDependencies": {
     "normalize-scss": "~3.0.2",
     "requirejs": "~2.1.16",
     "h5bp-console-polyfill": "~0.0.2",
     "modernizr": "~2.8.3",
-    "zeptojs": "~1.1.0"
+    "zeptojs": "~1.1.0",
+    "picturefill": "~2.2.0"
   }
 }

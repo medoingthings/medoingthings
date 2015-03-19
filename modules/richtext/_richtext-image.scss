@@ -1,0 +1,40 @@
+/**
+ * Image Full
+ */
+
+.richtext-image__wrapper {
+    max-width: em(1200);
+    margin: 0 auto em($base--space-default * 2);
+}
+
+.richtext-image__image {
+    margin: 0;
+
+    img {
+        width: 100%;
+    }
+}
+
+.richtext-image__caption {
+    position: relative;
+    padding: em($base--space-default);
+    font-size: size(5);
+    color: color(3, $colors-bw);
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        width: 40%;
+        height: 1px;
+        border-bottom: 1px solid color(5, $colors-bw);
+    }
+}
+
+@include breakpoint(false, $BP_DESKTOP_MIN) {
+    .richtext-image__wrapper {
+        max-width: none;
+    }
+}
