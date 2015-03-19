@@ -129,6 +129,28 @@
     }
 }
 
+/**
+ * Code Blocks
+ */
+
+.richtext__text__wrapper pre {
+    margin-bottom: em($base--space-default * 2);
+    padding: em($base--space-default);
+    font-family: $font-family-monospace;
+    font-size: size(5);
+    color: color(2, $colors-bw);
+    background: color(3, $colors-bw);
+}
+
+.richtext__text__wrapper code {
+    font-family: $font-family-monospace;
+    margin: 0;
+    padding: 0.2em;
+    font-size: 85%;
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 3px;
+}
+
 /*
  * Inline Voting
  */
