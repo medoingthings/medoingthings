@@ -71,6 +71,8 @@
 
 @function em($pixel, $base: false) {
 
+    $pixel: stripUnit($pixel);
+
     @if ($base != false) {
 
         // Calculate pixel base

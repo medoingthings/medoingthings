@@ -28,6 +28,8 @@ $BP_WIDESCREEN_MAX : 1500;
 // $ML_DESKTOP_UNLIMITED     : $BP_DESKTOP_MIN $total-columns;
 // $ML_UNLIMITED             : $BP_LIMIT $total-columns;
 
+// Default space unit
+$base--space-default: 20px;
 
 // Default colors
 $colors-default:
