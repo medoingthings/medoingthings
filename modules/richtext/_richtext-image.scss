@@ -21,7 +21,7 @@
     font-size: size(5);
     color: color(3, $colors-bw);
 
-    &:before {
+    &:after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -36,5 +36,11 @@
 @include breakpoint(false, $BP_DESKTOP_MIN) {
     .richtext-image__wrapper {
         max-width: none;
+    }
+}
+
+@include breakpoint($BP_DESKTOP_MIN) {
+    .richtext-image__caption {
+        max-width: 60%;
     }
 }
