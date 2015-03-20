@@ -65,6 +65,20 @@
             @include link-style(color(1, $colors-writing-34), true);
         }
     }
+
+    /**
+     * Social Share
+     */
+
+    .social-share__wrapper {
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid color(5, $colors-bw);
+        border-bottom: 1px solid color(5, $colors-bw);
+        padding-top: em($base--space-default * 3);
+        padding-bottom: em($base--space-default * 2);
+        margin-bottom: em($base--space-default * 3);
+    }
 }
 
 @include breakpoint(0, $BP_TABLET_MAX) {
@@ -76,5 +90,10 @@
         .richtext__intro__headline {
             text-align: left;
         }
+
+        .social-share__wrapper {
+            display: block;
+        }
+
     }
 }

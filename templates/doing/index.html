@@ -166,20 +166,12 @@
                         {% endif %}
 
                 </article>
-                <article class="feature-words__content">
-                    <div class="social-share__wrapper">
-                        <p class="social-share__text">It‘s a bit early to tell exactly what is going to happen here. But if you‘re curious – follow me...</p>
-                        <div class="social-share__list">
-                            <div class="social-share__item">
-                                <a href="https://twitter.com/medoingthings" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @medoingthings</a>
-                            </div>
 
-                            <div class="social-share__item">
-                                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffacebook.com%2Fmedoingthings&amp;width=250&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:80px;" allowTransparency="true"></iframe>
-                            </div>
-                        </div>
-                    </div>
+                <article class="feature-words__content">
+
+                    {% include 'partials/social-share' with {reason: 'It‘s a bit early to tell exactly what is going to happen here. But if you‘re curious – follow me...'} %}
                 </article>
+
                 <div class="feature-words__background">
                     <svg width="1580" height="1440" viewBox="0 0 1580 1440" preserveAspectRatio="xMinYMin">
                         <title>Mark Rickert staring into the camera</title>

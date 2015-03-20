@@ -4,6 +4,7 @@
 
 .social-share__text {
     max-width: em(380);
+    margin-bottom: em($base--space-default * 2);
     color: color(2);
     float: left;
 }

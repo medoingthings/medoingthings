@@ -1,0 +1,14 @@
+{% set reason = reason|default('You should follow me on Twitter or Facebook, if you liked this.') %}
+
+<div class="social-share__wrapper">
+    <p class="social-share__text">{{ reason }}</p>
+    <div class="social-share__list">
+        <div class="social-share__item">
+            <a href="https://twitter.com/medoingthings" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @medoingthings</a>
+        </div>
+
+        <div class="social-share__item">
+            <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffacebook.com%2Fmedoingthings&amp;width=250&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:80px;" allowTransparency="true"></iframe>
+        </div>
+    </div>
+</div>
