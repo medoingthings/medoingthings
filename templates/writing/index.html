@@ -19,7 +19,7 @@
                     {% set postDate = postDate ~ (", " ~ entry.postDate.year) %}
                 {% endif %}
 
-                    <ul class="teaser-compact__list">
+                    <ul class="teaser-compact__list theme-article--{{ entry.id }}">
                         <li class="teaser-compact__item">
                             <a href="{{ entry.url }}" class="teaser-compact__link">
                                 <div class="_heading">

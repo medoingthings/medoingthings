@@ -9,6 +9,12 @@ $colors-writing-45:
     #db5b48; // Craft Color
 
 .theme-article--45 {
+    .teaser-compact__item {
+        h2 em {
+            color: color(4, $colors-writing-45);
+        }
+    }
+
     .layout-triangle__item-1 {
         transform: translate(657px, 72px) rotate(-2deg);
         fill: color(1, $colors-writing-45);

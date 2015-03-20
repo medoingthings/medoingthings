@@ -3,6 +3,12 @@
  */
 
 .theme-article--34 {
+    .teaser-compact__item {
+        h2 em {
+            color: color(1, $colors-writing-34);
+        }
+    }
+
     .layout__content {
         margin-top: em(228);
     }
