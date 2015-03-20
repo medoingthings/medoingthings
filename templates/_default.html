@@ -70,8 +70,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% spaceless %}
 
+        {# Twitter Card Description #}
+        {% if entry.metaDescription is defined and entry.metaDescription is not empty %}
+            <meta name="twitter:description" content="{{ entry.metaDescription }}">
+        {% endif %}
+
         {#
-         # Facebook og:image
+         # Facebook og:image and Twitter Card Image
          #}
 
         {% set imageUrl = "" %}
@@ -92,6 +97,8 @@
         {% if (imageUrl != "") %}
 
             <meta property="og:image" content="{{ siteUrl }}{{ imageUrl }}">
+            <meta name="twitter:image" content="{{ siteUrl }}{{ imageUrl }}">
+
 
         {% endif %}
 
