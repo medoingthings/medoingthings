@@ -104,6 +104,22 @@
     h3 {
         color: color(4, $colors-writing-34);
     }
+
+    ul {
+        margin-bottom: em($base--space-default * 2);
+        padding: 0 em($base--space-default * 2) 0;
+    }
+
+    li {
+        padding: em($base--space-default) 0;
+        font-size: size(5);
+        line-height: lineHeight(5);
+        border-top: 1px solid color(5, $colors-bw);
+
+        &:first-child {
+            border: none;
+        }
+    }
 }
 
 /*
