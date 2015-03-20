@@ -67,8 +67,15 @@
 .richtext__intro__wrapper,
 .richtext__text__wrapper {
     p {
-        margin: 0 0 baselineMargin(size($font-size-base), lineHeight($font-size-base), 1);
         max-width: em(650);
+        margin: 0 0 baselineMargin(size($font-size-base), lineHeight($font-size-base), 1);
+
+        &._info-box {
+            max-width: none;
+            padding: em($base--space-default * 2, size(5));
+            font-size: size(5);
+            background: color(6, $colors-bw);
+        }
     }
 
     h1 em,
