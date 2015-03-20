@@ -1,0 +1,155 @@
+/**
+ * Unique Styles For: Craft – The CMS You Should Know
+ */
+
+$colors-writing-72:
+    #ffdf00, // Yellow
+    #4f4b46; // Blackish
+
+.theme-article--72 {
+    .layout-triangle__item-1 {
+        transform: translate(727px, -188px) rotate(20deg);
+        fill: color(1, $colors-writing-72);
+    }
+
+    .layout-triangle__item-2 {
+        transform: translate(989px, -222px) rotate(27deg);
+        fill: color(2, $colors-writing-72);
+    }
+
+    .layout-triangle__item-3 {
+        transform: translate(1080px, -270px) rotate(32deg);
+        fill: color(1, $colors-writing-72);
+    }
+
+    .layout-triangle__item-4 {
+        transform: translate(896px, -280px) rotate(35deg);
+        fill: color(2, $colors-bw);
+        opacity: 0.98;
+    }
+
+    a {
+        &:link,
+        &:active,
+        &:visited {
+            @include link-style(color(1, $colors-writing-72));
+        }
+
+        &:hover {
+            @include link-style(color(1, $colors-writing-72), true);
+        }
+    }
+
+    .richtext__intro__wrapper {
+        h1 em {
+            color: color(1, $colors-writing-72);
+        }
+    }
+
+    .teaser-compact__item {
+        h2 em {
+            color: color(1, $colors-writing-72);
+        }
+    }
+
+    .richtext__text__wrapper {
+        h3 {
+            font-family: $font-family-default;
+            font-style: normal;
+            display: inline-block;
+            margin-bottom: baselineMargin(size(3), lineHeight(3));
+            margin-left: em(-$base--space-default / 2);
+            padding: 0 em($base--space-default / 2);
+            color: color(2, $colors-writing-72);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        h4 {
+            position: relative;
+            color: color(2, $colors-writing-72);
+            margin-bottom: baselineMargin(size(4), lineHeight(4));
+            font-weight: 900;
+            text-transform: uppercase;
+
+            &:before {
+                // content: '';
+                position: absolute;
+                top: 0.3em;
+                left: em(-$base--space-default * 3);
+                display: block;
+                width: em($base--space-default * 2);
+                height: 1em;
+                background-color: color(1, $colors-writing-72);
+            }
+        }
+    }
+
+    .richtext__voting__item {
+        color: color(1, $colors-writing-72);
+
+        &:nth-child(1) {
+            button {
+                color: color(2, $colors-writing-72);
+
+                &:after {
+                    background-color: darken(color(1, $colors-writing-72), 5%);
+                }
+
+                &:before {
+                    border-color: color(1, $colors-writing-72);
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            color: color(2, $colors-writing-72);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(2, $colors-writing-72), 5%);
+                }
+
+                &:before {
+                    border-color: color(2, $colors-writing-72);
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            color: color(3, $colors-bw);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(3, $colors-bw), 5%);
+                }
+
+                &:before {
+                    border-color: color(3, $colors-bw);
+                }
+            }
+        }
+    }
+}
+
+@include breakpoint($BP_DESKTOP_MIN) {
+    .theme-article--72 {
+        .richtext__text__wrapper {
+            h2 {
+                margin-left: em(-$base--space-default * 4);
+            }
+        }
+    }
+}
+
+@include breakpoint($BP_TABLET_MAX, $BP_DESKTOP_MAX) {
+    .theme-article--72 {
+        .richtext__text__wrapper {
+            h2 {
+                margin-left: em(-$base--space-default * 2);
+            }
+        }
+    }
+}
