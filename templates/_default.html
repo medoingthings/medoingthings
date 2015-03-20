@@ -70,7 +70,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% spaceless %}
 
-        {# Twitter Card Description #}
+        {# Twitter Card #}
+        <meta name="twitter:card" value="summary">
+        <meta name="twitter:title" value="{{ headTitle }}">
+
         {% if entry.metaDescription is defined and entry.metaDescription is not empty %}
             <meta name="twitter:description" content="{{ entry.metaDescription }}">
         {% endif %}
