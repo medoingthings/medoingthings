@@ -31,7 +31,7 @@
     width: 100%;
     max-width: em($BP_WIDESCREEN_MAX);
     margin: 0 auto;
-    padding: 0 em(40);
+    padding: 0 em($base--space-default * 2);
 }
 
 @include breakpoint(false, $BP_SMARTPHONE_MAX) {
