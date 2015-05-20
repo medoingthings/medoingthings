@@ -1,0 +1,214 @@
+/**
+ * Unique Styles For: Styling Elements Is A Trap
+ */
+
+$colors-writing-99:
+    #ec9c01, // Orange
+    #2c2c2c, // blackish
+    #383838, // lighter blackish
+    #e2e2e2; // whiteish
+
+.theme-article--99 {
+    &.theme-section--writing {
+        background-color: color(2, $colors-writing-99);
+    }
+
+    .navigation-main__text {
+        &.doing {
+            color: color(4, $colors-writing-99);
+        }
+
+        &.writing {
+            color: #fff;
+        }
+    }
+
+    .layout-triangle__wrapper {
+        z-index: 0;
+    }
+
+    .layout__content {
+        position: relative;
+        z-index: 1;
+        margin-top: em(228);
+    }
+
+    .teaser-compact__item {
+        h2 em {
+            color: color(1, $colors-writing-99);
+        }
+    }
+
+
+    .row-triangle__wrapper {
+        padding-top: em(80);
+    }
+
+    .row-triangle__background path {
+        display: none;
+    }
+
+    .layout-triangle__item-1,
+    .layout-triangle__item-2 {
+        fill: color(1, $colors-writing-99);
+    }
+
+    .layout-triangle__item-3,
+    .layout-triangle__item-4 {
+        fill: color(3, $colors-writing-99);
+        opacity: 0.99;
+    }
+
+    .layout-triangle__item-1 {
+        transform: translate(587px, -662px) rotate(-38deg);
+    }
+
+    .layout-triangle__item-2 {
+        transform: translate(805px, -1090px) rotate(34deg);
+    }
+
+    .layout-triangle__item-3 {
+        transform: translate(685px, -540px) rotate(-39deg);
+    }
+
+    .layout-triangle__item-4 {
+        transform: translate(938px, -1430px) rotate(44deg);
+    }
+
+    .richtext__intro__wrapper {
+        margin-bottom: em($base--space-default * 2);
+
+        h1,
+        p {
+            color: color(4, $colors-writing-99);
+        }
+
+        h1 em {
+            color: color(1, $colors-writing-99);
+        }
+    }
+
+    .richtext__text__wrapper {
+        h2,
+        h3 {
+            color: color(1, $colors-writing-99);
+        }
+
+        p {
+            color: color(4, $colors-writing-99);
+
+            &._info-box {
+                background-color: color(3, $colors-writing-99);
+            }
+        }
+    }
+
+    .richtext__quote__content,
+    .richtext__voting__headline {
+        color: color(4, $colors-writing-99);
+    }
+
+    .richtext__voting__item {
+        color: color(1, $colors-writing-99);
+
+        &:nth-child(1) {
+            button {
+                color: color(2, $colors-writing-99);
+
+                &:after {
+                    background-color: darken(color(1, $colors-writing-99), 5%);
+                }
+
+                &:before {
+                    border-color: color(1, $colors-writing-99);
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            color: color(2, $colors-writing-99);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(2, $colors-writing-99), 5%);
+                }
+
+                &:before {
+                    border-color: color(2, $colors-writing-99);
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            color: color(3, $colors-bw);
+
+            button {
+
+                &:after {
+                    background-color: darken(color(3, $colors-bw), 5%);
+                }
+
+                &:before {
+                    border-color: color(3, $colors-bw);
+                }
+            }
+        }
+    }
+
+
+    a {
+
+        &:link,
+        &:active,
+        &:visited {
+            @include link-style(color(1, $colors-writing-99));
+        }
+
+        &:hover {
+            @include link-style(color(1, $colors-writing-99), true);
+        }
+    }
+
+    .social-share__wrapper {
+        background-color: transparent;
+        border: 0;
+    }
+
+    .social-share__text {
+        color: color(4, $colors-writing-99);
+    }
+
+    #disqus_thread {
+        background-color: #fff;
+        padding: 20px;
+    }
+}
+
+@include breakpoint(false, $BP_TABLET_MAX) {
+    .theme-article--99 {
+        .richtext__text__wrapper pre {
+            margin-left: em($base--space-default * -2, size(5));
+            margin-right: em($base--space-default * -2, size(5));
+        }
+
+        #disqus_thread {
+            margin-left: em($base--space-default * -2);
+            margin-right: em($base--space-default * -2);
+        }
+    }
+}
+
+@include breakpoint(false, $BP_SMARTPHONE_MAX) {
+    .theme-article--99 {
+        .navigation-main__wrapper {
+            background: color(3, $colors-writing-99);
+        }
+
+        .quote-shuffle-list {
+            font-size: 80%;
+            top: 0;
+        }
+    }
+}
+
