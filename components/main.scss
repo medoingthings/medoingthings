@@ -14,8 +14,8 @@
  * Basic Styles
  */
 
-// Normalize.scss
-@import "../bower_components/normalize-scss/normalize.scss";
+// Normalize.css
+@import "../node_modules/normalize.css/normalize";
 
 // Global styles
 @import "base/animations";

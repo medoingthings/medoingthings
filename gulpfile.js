@@ -34,7 +34,7 @@ var uglify = require('gulp-uglify');
 
 // Clean up dist folders to remove outdated files
 gulp.task('clean:production', function () {
-return del([gulpconfig.clean.path]);
+return del(gulpconfig.clean.path);
 });
 
 // Copy assets to the dist folder
@@ -146,6 +146,12 @@ gulp.task('sasslint:development', function () {
 return gulp.src(gulpconfig.sass.src)
   .pipe(sassLint())
   .pipe(sassLint.format());
+});
+
+// Copy templates to the craft folder
+gulp.task('templates', function () {
+  gulp.src(gulpconfig.templates.src)
+    .pipe(gulp.dest(gulpconfig.templates.dest))
 });
 
 /**

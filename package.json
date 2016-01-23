@@ -27,6 +27,7 @@
     "gulp-uglify": "^1.5.1",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
+    "normalize.css": "^3.0.3",
     "run-sequence": "^1.1.5",
     "zeptojs": "^1.1.4"
   },

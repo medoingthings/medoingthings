@@ -20,7 +20,10 @@ module.exports = {
     }
   },
   clean: {
-    path: 'www/public/dist'
+    path: [
+      'www/public/dist',
+      'www/craft/templates'
+    ]
   },
   copy: {
     js: {
