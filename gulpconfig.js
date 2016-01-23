@@ -1,51 +1,88 @@
 /**
  * Global Configuration for Gulp Tasks
  */
-
 module.exports = {
-    assets: {
-        src: 'assets/**/*.*',
-        dest: './www/public/assets'
-    },
-    autoprefixer: {
-        browsers: ['last 4 versions'],
-        cascade: false
-    },
-    copy: {
-        js: {
-            src: [
-                'bower_components/picturefill/dist/picturefill.min.js'
-            ],
-            dest: 'www/public/dist/js'
-        }
-    },
-    css: {
-        dest: './www/public/dist/css'
-    },
-    js: {
-        src: 'modules/**/*.js',
-        dest: 'www/public/dist/js'
-    },
-    modernizr: {
-        settings: {
-            'cache' : true,
-            'options' : [
-                    'setClasses',
-                    'html5printshiv',
-                    'prefixed'
-                ],
-            'devFile' : 'bower_components/modernizr/modernizr.js'
-        }
-    },
-    sass: {
-        modules: 'modules/**/*.scss',
-        options: {
-            outputStyle : 'compressed',
-            errLogToConsole: true
-        }
-    },
-    templates: {
-        src: 'templates/**/*.html',
-        dest: 'www/craft/templates'
+  autoprefixer: {
+    browsers: [
+      'last 4 versions',
+      'ie 9',
+      'android 2.3',
+      'android 4',
+      'opera 12'
+    ],
+    cascade: false
+  },
+  browsersync: {
+    options: {
+      proxy: "http://medoingthings.dev",
+      notify: false,
+      open: 'local'
     }
+  },
+  clean: {
+    path: 'www/public/dist'
+  },
+  copy: {
+    js: {
+      libs: {
+        src: 'assets/js/libs/*.js',
+        dest: 'dist/js/libs'
+      }
+    }
+  },
+  css: {
+    dest: 'www/public/dist/css'
+  },
+  imagemin: {
+    src: 'assets/images/**/*',
+    options: {
+      progressive: true,
+      interlaced: true,
+      svgoPlugins: [
+        {removeUnknownsAndDefaults: false},
+        {cleanupIDs: false}]
+    },
+    dest: 'www/public/dist/images'
+  },
+  javascript: {
+    all: 'components/**/*.js',
+    src: 'components/*.js',
+    dest: 'www/public/dist/js'
+  },
+  modernizr: {
+    settings: {
+      'cache' : true,
+      'options' : [
+        'setClasses',
+          'html5printshiv'
+      ]
+    }
+  },
+  preDom: {
+    src: [
+      'www/public/dist/js/modernizr.js',
+      'node_modules/picturefill/dist/picturefill.js'
+    ],
+    file: 'predom.js',
+    dest: 'www/public/dist/js'
+  },
+  sass: {
+    options: {
+      development: {
+        outputStyle : 'nested',
+          precision: 10,
+          sourceMap: true
+      },
+      production: {
+        outputStyle : 'compressed',
+          precision: 10,
+          sourceMap: false
+      }
+    },
+    src: 'components/**/*.scss'
+  },
+  templates: {
+    src: 'templates/**/*.twig',
+    dest: 'www/craft/templates'
+  }
 }
