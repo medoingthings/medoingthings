@@ -9,11 +9,12 @@
   "onecase":   true,
   "lastsemic": true,
   "globals": {
-      "Modernizr": true,
       "document": true,
-      "window": true,
-      "navigator": true,
       "history": true,
-      "location": true
+      "localStorage": true,
+      "location": true,
+      "Modernizr": true,
+      "navigator": true,
+      "window": true
   }
 }
