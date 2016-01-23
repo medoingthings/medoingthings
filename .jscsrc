@@ -9,7 +9,6 @@
   "disallowMixedSpacesAndTabs": true,
   "disallowMultiLineTernary": true,
   "disallowMultipleLineBreaks": true,
-  "disallowMultipleSpaces": true,
   "disallowMultipleVarDecl": true,
   "disallowNestedTernaries": true,
   "disallowNewlineBeforeBlockStatements": true,
