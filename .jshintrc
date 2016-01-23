@@ -1,0 +1,19 @@
+{
+  "boss":      true,
+  "node":      true,
+  "eqeqeq":    true,
+  "strict":    "global",
+  "newcap":    false,
+  "undef":     true,
+  "unused":    true,
+  "onecase":   true,
+  "lastsemic": true,
+  "globals": {
+      "Modernizr": true,
+      "document": true,
+      "window": true,
+      "navigator": true,
+      "history": true,
+      "location": true
+  }
+}
