@@ -93,6 +93,7 @@ define(['zeptojs', 'api-talk'], function ($, apiTalk) {
 
             function updateButtons () {
 
+
                 self.$btnItems.each(function (index) {
 
                     var $this      = $(this),
@@ -108,6 +109,10 @@ define(['zeptojs', 'api-talk'], function ($, apiTalk) {
                         // determines which of the five height
                         // classes (.h10 to .h50) should be applied to the buttons
                         scope = Math.round(percentage / 20) * 10;
+
+                    $button.removeClass('h10 h20 h30 h40 h50');
+                    console.log($button);
+                    console.log(scope);
 
                     // check if percentage has a decimal. If yes, show only 1
                     percentage = percentage % 1 === 0 ? percentage : percentage.toFixed(1);
