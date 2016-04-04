@@ -16,6 +16,8 @@
  */
 
 .theme-section--writing {
+    transition: background-color 0.3s;
+
     .layout__content {
         margin-top: em(128);
     }

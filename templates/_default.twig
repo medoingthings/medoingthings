@@ -147,40 +147,42 @@
 
     {# Set a specific theme class for each section #}
     {% set themeName = entry.section.handle|default(themeName|default('')) %}
-    <section class="layout__wrapper{{ themeName is defined ? ' theme-section--' ~ themeName }}{{ pageClass is defined ? ' ' ~ pageClass }}">
+    <div id="smoothstate-container">
+        <section id="page-wrapper" class="layout__wrapper{{ themeName is defined ? ' theme-section--' ~ themeName }}{{ pageClass is defined ? ' ' ~ pageClass }}">
 
-        <header class="navigation-main__wrapper">
-            <nav class="navigation-main__list" role="navigation">
-                <a href="{{ siteUrl }}" class="navigation-main__link{% if craft.request.firstSegment == '' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text doing">doing</span><span class="last">things</span></a>
-                <a href="{{ url('writing') }}" class="navigation-main__link{% if craft.request.firstSegment == 'writing' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text writing">writing</span><span class="last">things</span></a>
-                {# <a href="{{ url('sharing') }}" class="navigation-main__link{% if craft.request.firstSegment == 'sharing' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text sharing">sharing</span><span class="last">things</span></a> #}
-            </nav>
-        </header>
+            <header class="navigation-main__wrapper">
+                <nav class="navigation-main__list">
+                    <a href="{{ siteUrl }}" class="navigation-main__link{% if craft.request.firstSegment == '' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text doing">doing</span><span class="last">things</span></a>
+                    <a href="{{ url('writing') }}" class="navigation-main__link{% if craft.request.firstSegment == 'writing' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text writing">writing</span><span class="last">things</span></a>
+                    {# <a href="{{ url('sharing') }}" class="navigation-main__link{% if craft.request.firstSegment == 'sharing' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text sharing">sharing</span><span class="last">things</span></a> #}
+                </nav>
+            </header>
 
-        <div class="layout__content">
+            <main id="content" class="layout__content">
 
+                {% block content %}{% endblock content %}
 
-            {% block content %}{% endblock content %}
+            </main>
 
             <footer class="layout-footer__wrapper">
                 <ul class="layout-footer__list">
                     <li class="layout-footer__item"><a href="{{ url('imprint') }}" class="layout-footer__link">imprint</a></li>
                 </ul>
             </footer>
-        </div>
 
-        <div class="layout-triangle__wrapper">
+            <div class="layout-triangle__wrapper">
 
-            <svg width="2209" height="1450" viewBox="0 0 2209 1450">
-                <polygon transform="translate(2045, -160) rotate(75)" class="layout-triangle__item layout-triangle__item-1" fill="#ffff33" points="625 0, 0 1082, 1250 1082"/>
-                <polygon transform="translate(382, 1007) rotate(-81)" class="layout-triangle__item layout-triangle__item-2" fill="#99ff99" points="500 0, 0 866, 1000 866"/>
-                <polygon transform="translate(508, 760) rotate(-63)" class="layout-triangle__item layout-triangle__item-3" fill="#66ffff" points="563 0, 0 975, 1126 975"/>
-                <polygon transform="translate(254, 110) rotate(14)" class="layout-triangle__item layout-triangle__item-4" fill="#66ff99" points="625 0, 0 1082, 1250 1082"/>
-            </svg>
+                <svg width="2209" height="1450" viewBox="0 0 2209 1450">
+                    <polygon transform="translate(2045, -160) rotate(75)" class="layout-triangle__item layout-triangle__item-1" fill="#ffff33" points="625 0, 0 1082, 1250 1082"/>
+                    <polygon transform="translate(382, 1007) rotate(-81)" class="layout-triangle__item layout-triangle__item-2" fill="#99ff99" points="500 0, 0 866, 1000 866"/>
+                    <polygon transform="translate(508, 760) rotate(-63)" class="layout-triangle__item layout-triangle__item-3" fill="#66ffff" points="563 0, 0 975, 1126 975"/>
+                    <polygon transform="translate(254, 110) rotate(14)" class="layout-triangle__item layout-triangle__item-4" fill="#66ff99" points="625 0, 0 1082, 1250 1082"/>
+                </svg>
 
-        </div>
+            </div>
 
-    </section>
+        </section>
+    </div>
 {% if (not craft.request.isAjax or craft.request.isLivePreview)  %}
 
     <script async src="{{ craft.bust.er('/dist/js/medoingthings.js') }}"></script>

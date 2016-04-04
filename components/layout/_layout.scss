@@ -8,3 +8,34 @@
     min-height: 100%;
     overflow: hidden;
 }
+
+@keyframes animate-out {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+}
+
+@keyframes animate-in {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+._animate-out #content > * {
+    animation: animate-out 0.7s forwards;
+}
+
+._animate-in #content > * {
+    animation: animate-in 0.7s alternate;
+}

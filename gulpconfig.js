@@ -87,5 +87,12 @@ module.exports = {
   templates: {
     src: 'templates/**/*.twig',
     dest: 'www/craft/templates'
+  },
+  webpack: {
+    options: {
+      output: {
+        filename: 'medoingthings.js',
+      }
+    }
   }
 }

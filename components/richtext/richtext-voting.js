@@ -1,236 +1,217 @@
-define(['zeptojs', 'api-talk'], function ($, apiTalk) {
+'use strict';
 
-    /*
-     * A quick voting system Dynamic Blog Post within
-     * the craft template type "Dynamic Blog Post".
+var $ = require('zeptojs');
+var apiTalk = require('api-talk');
+
+/*
+ * A quick voting system Dynamic Blog Post within
+ * the craft template type "Dynamic Blog Post".
+ *
+ * The user clicks on one choice and this button will show the percentage
+ * rate how other users voted. Values store on api.medoingthings.com.
+ */
+
+$.fn.richtextVoting = function () {
+
+  return this.each(function () {
+    var that = this;
+
+    this.$el           = $(this);
+    this.$btnWrapper   = this.$el.find('.richtext__voting__list');
+    this.$btnItems     = this.$el.find('.richtext__voting__item');
+    this.pageId        = this.$el.data('page-id');
+    this.voteId        = this.$el.data('vote-id');
+    this.pageVoteId    = 'dbp_vote-' + this.pageId + '' + this.voteId;
+    this.voteData      = getVoteDataLocal() || {};
+    this.voteUrl       = apiTalk.apiUrl + 'dbp/vote/' + this.pageId + '-' + this.voteId;
+
+    // Receive data for the current voting
+    apiTalk.getJSON(this.voteUrl, function (data) {
+
+      // Only if valid data is received
+      if (data !== null && typeof data === 'object') {
+
+        // Store response in local variable
+        $.extend(that.voteData, data);
+
+        // Update localStorage only, if the user already
+        // made a choice
+        if (typeof that.voteData.userChoice === 'number') {
+
+          // Write that.voteData to localStorage
+          setVoteDataLocal();
+
+          // Update the button with the new data
+          updateButtons();
+        }
+      }
+    });
+
+    // Has the user already voted
+    if (getVoteDataLocal() !== null) {
+      updateButtons();
+    }
+
+    // Listen to click event on target
+    that.$btnWrapper.one('click', 'button', handleBtnClick);
+
+    /**
+     * Calculate percentages and update the buttons accordingly
      *
-     * The user clicks on one choice and this button will show the percentage
-     * rate how other users voted. Values store on api.medoingthings.com.
+     * @param {Object} e Zepto event object
      */
 
-    $.fn.richtextVoting = function() {
+    function handleBtnClick (e) {
 
-        return this.each(function () {
-            var self = this;
+      // Which button was clicked?
+      var $this        = $(e.currentTarget);
+      var clickedIndex = $this.data('vote-index');
+
+      // Storing the users choice
+      that.voteData.userChoice = clickedIndex;
 
-            self.$el           = $(this);
-            self.$btnWrapper   = self.$el.find('.richtext__voting__list');
-            self.$btnItems     = self.$el.find('.richtext__voting__item');
-            self.pageId        = self.$el.data('page-id');
-            self.voteId        = self.$el.data('vote-id');
-            self.pageVoteId    = "dbp_vote-" + self.pageId + "" + self.voteId;
-            self.voteData      = getVoteDataLocal() || {};
-            self.voteUrl       = apiTalk.apiUrl + 'dbp/vote/' + self.pageId + '-' + self.voteId;
+      // Make sure we have a valid voteData object
+      validateVoteData();
 
-            // receive data for the current voting
-            apiTalk.getJSON(self.voteUrl, function (data) {
+      // Add 1 to clicked voting in that.voteData
+      that.voteData[clickedIndex]++;
 
-                // only if valid data is received
-                if (data !== null && typeof data === 'object') {
+      // Send clicked voting to server
+      apiTalk.saveJSON(that.voteUrl, {
+        addToIndex: clickedIndex,
+        pageId: that.pageId,
+        voteId: that.voteId
+      });
 
-                    // store response in local variable
-                    $.extend(self.voteData, data);
+      // Store data in localStorage
+      setVoteDataLocal();
 
-                    // update localStorage only, if the user already
-                    // made a choice
-                    if (typeof self.voteData.userChoice === 'number') {
+      updateButtons();
+    }
 
-                        // write self.voteData to localStorage
-                        setVoteDataLocal();
+    /**
+     * Update the buttons to show the voting percentages
+     */
 
-                        // update the button with the new data
-                        updateButtons();
-                    }
-                }
-            });
+    function updateButtons () {
+      that.$btnItems.each(function (index) {
 
-            // has the user already voted
-            if (getVoteDataLocal() !== null) {
-                updateButtons();
-            }
+        var $this      = $(this);
+        var $button    = $this.find('button');
+        var $percent   = $this.find('.percent');
+        var voteTotal  = getTotalVotes();
+        var voteData   = that.voteData;
+        var userChoice = parseInt(voteData.userChoice, 10);
 
-            // Listen to click event on target
-            self.$btnWrapper.one('click', 'button', handleBtnClick);
+        // Percentage to display
+        var percentage = 100 / voteTotal * voteData[index];
 
+        // Determines which of the five height
+        // classes (.h10 to .h50) should be applied to the buttons
+        var scope = Math.round(percentage / 20) * 10;
 
-            /**
-             * Calculate percentages and update the buttons accordingly
-             *
-             * @param {Object} e Zepto event object
-             */
+        $button.removeClass('h10 h20 h30 h40 h50');
+        console.log($button);
+        console.log(scope);
 
-            function handleBtnClick (e) {
-
-                // which button was clicked?
-                var $this        = $(e.currentTarget),
-                    clickedIndex = $this.data('vote-index');
-
-                // storing the users choice
-                self.voteData.userChoice = clickedIndex;
-
-                // make sure we have a valid voteData object
-                validateVoteData();
-
-                // add 1 to clicked voting in self.voteData
-                self.voteData[clickedIndex]++;
-
-                // send clicked voting to server
-                apiTalk.saveJSON(self.voteUrl, {
-                    'addToIndex': clickedIndex,
-                    'pageId': self.pageId,
-                    'voteId': self.voteId
-                });
-
-                // store data in localStorage
-                setVoteDataLocal();
-
-                updateButtons();
-            }
-
-            /**
-             * Update the buttons to show the voting percentages
-             */
-
-            function updateButtons () {
-
-
-                self.$btnItems.each(function (index) {
-
-                    var $this      = $(this),
-                        $button    = $this.find('button'),
-                        $percent   = $this.find('.percent'),
-                        voteTotal  = getTotalVotes(),
-                        voteData   = self.voteData,
-                        userChoice = parseInt(voteData.userChoice, 10),
-
-                        // percentage to display
-                        percentage = 100 / voteTotal * voteData[index],
-
-                        // determines which of the five height
-                        // classes (.h10 to .h50) should be applied to the buttons
-                        scope = Math.round(percentage / 20) * 10;
-
-                    $button.removeClass('h10 h20 h30 h40 h50');
-                    console.log($button);
-                    console.log(scope);
-
-                    // check if percentage has a decimal. If yes, show only 1
-                    percentage = percentage % 1 === 0 ? percentage : percentage.toFixed(1);
-
-                    // button looks inactive if it wasn't the users choice
-                    if (userChoice !== index) {
-                        $this.addClass('is-inactive')
-                    }
-
-                    // disable button and add height class
-                    $button
-                        .addClass('h' + scope)
-                        .attr('disabled', 'disabled');
-
-                    // write percentage to span element
-                    $percent
-                        .html(percentage + '%')
-                        .addClass('is-visible');
-
-                });
-            };
-
-
-            /**
-             * Get the sum of all votes in the self.voteData object
-             *
-             * @return {Int} totalVotes
-             */
-
-            function getTotalVotes () {
-
-                var totalVotes = 0,
-                    data       = self.voteData;
-
-                // calculate totalVotes adding the numbers in the object
-                for (prop in data) {
-
-                    // make sure we count only properties that are numbers
-                    // to prevent counting e.g. 'self.userData.userChoice'
-                    prop = parseInt(prop, 10);
-
-                    if (data.hasOwnProperty(prop) && prop !== 'NaN') {
-
-                        totalVotes += parseInt(data[prop], 10);
-                    }
-                }
-
-
-                return totalVotes;
-
-            };
-
-
-            /*
-             * validateVoteData
-             * Check if we have valid voteData. If not, populate self.voteData
-             * with zero based numbers.
-             * When this function ran, it's save to work with self.voteData
-             */
-
-            function validateVoteData () {
-
-                // how many buttons do we have?
-                var btnCount = self.$btnItems.length;
-
-                // validate only if necessary
-                if (!self.voteData.length || self.voteData.length < btnCount || typeof self.voteData !== 'object') {
-
-                    // a loop for every button we have
-                    for (var i = 0; i <  btnCount; i++) {
-
-                        // only add value if it is not already there
-                        if (!self.voteData.hasOwnProperty(i)) {
-
-                            self.voteData[i] = 0;
-
-                        }
-                    }
-                }
-            }
-
-
-            /*
-             * Get voteData out of the localStorage if present
-             */
-
-            function getVoteDataLocal () {
-
-                if (Modernizr.localstorage) {
-
-                    return JSON.parse(localStorage.getItem(self.pageVoteId));
-                } else {
-
-                    return false;
-                }
-            }
-
-
-            /*
-             * Store voteData in localStorage
-             */
-
-            function setVoteDataLocal () {
-
-                if (Modernizr.localstorage) {
-
-                    localStorage.setItem(self.pageVoteId, JSON.stringify(self.voteData));
-                    return true;
-
-                } else {
-
-                    return false;
-                }
-            }
-        });
-    };
-
-
-});
-
-
+        // Check if percentage has a decimal. If yes, show only 1
+        percentage = percentage % 1 === 0 ? percentage : percentage.toFixed(1);
+
+        // Button looks inactive if it wasn't the users choice
+        if (userChoice !== index) {
+          $this.addClass('is-inactive');
+        }
+
+        // Disable button and add height class
+        $button
+          .addClass('h' + scope)
+          .attr('disabled', 'disabled');
+
+        // Write percentage to span element
+        $percent
+          .html(percentage + '%')
+          .addClass('is-visible');
+      });
+    }
+
+    /**
+     * Get the sum of all votes in the that.voteData object
+     *
+     * @return {Int} totalVotes
+     */
+
+    function getTotalVotes () {
+
+      var totalVotes = 0;
+      var data       = that.voteData;
+
+      // Calculate totalVotes adding the numbers in the object
+      for (var prop in data) {
+
+        // Make sure we count only properties that are numbers
+        // to prevent counting e.g. 'that.userData.userChoice'
+        prop = parseInt(prop, 10);
+
+        if (data.hasOwnProperty(prop) && prop !== 'NaN') {
+
+          totalVotes += parseInt(data[prop], 10);
+        }
+      }
+
+      return totalVotes;
+    }
+
+    /*
+     * Check if we have valid voteData. If not, populate that.voteData
+     * with zero based numbers.
+     * When this function ran, it's save to work with that.voteData
+     */
+
+    function validateVoteData () {
+
+      // How many buttons do we have?
+      var btnCount = that.$btnItems.length;
+
+      // Validate only if necessary
+      if (!that.voteData.length || that.voteData.length < btnCount || typeof that.voteData !== 'object') {
+
+        // A loop for every button we have
+        for (var i = 0; i <  btnCount; i++) {
+
+          // Only add value if it is not already there
+          if (!that.voteData.hasOwnProperty(i)) {
+
+            that.voteData[i] = 0;
+          }
+        }
+      }
+    }
+
+    /*
+     * Get voteData out of the localStorage if present
+     */
+
+    function getVoteDataLocal () {
+
+      if (Modernizr.localstorage) {
+        return JSON.parse(localStorage.getItem(that.pageVoteId));
+      } else {
+        return false;
+      }
+    }
+
+    /*
+     * Store voteData in localStorage
+     */
+
+    function setVoteDataLocal () {
+
+      if (Modernizr.localstorage) {
+        localStorage.setItem(that.pageVoteId, JSON.stringify(that.voteData));
+        return true;
+      } else {
+        return false;
+      }
+    }
+  });
+};
