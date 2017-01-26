@@ -15,7 +15,7 @@ define(['zeptojs'], function ($) {
             self.$el         = $(this);
             self.$answerLink = self.$el.find('.feature-query__answer__link');
             self.$nextBtn    = $('#feature-query__TplNext').detach().html();
-            self.apiUrl      = 'http://api.medoingthings.' + tld + '/sfl';
+            self.apiUrl      = '//api.medoingthings.' + tld + '/sfl';
             self.apiData     = {};
             self.logData     = {};
 
