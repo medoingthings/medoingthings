@@ -1,0 +1,29 @@
+{#
+ # Richtext
+ # Full image
+ #}
+
+<div class="richtext-image__wrapper">
+    <figure class="richtext-image__image">
+{# {{ dump(block.image.one().one()) }} #}
+    {% include 'utilities/picturefill' with {
+       imageModel: block.image.one(),
+       imageSet: [
+           ['richtextFullL', '1200px', '1.5x'],
+           ['richtextFullM', '800px'],
+           ['richtextFullS', '500px'],
+           ['richtextFullM', 'noscript'],
+           ['richtextFullL']
+       ]
+       }
+     %}
+
+    {% if block.caption is not empty %}
+        <figcaption class="richtext-image__caption">
+            {{ block.caption }}
+        </figcaption>
+    {% endif %}
+
+    </figure>
+
+</div>

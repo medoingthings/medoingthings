@@ -1,0 +1,18 @@
+{#
+ # Richtext Elements
+ #}
+
+{# set date format like this: January 1st #}
+{% set postDate = entry.postDate | date("F jS") %}
+
+{# Post not from this year? Append year: January 1st, 2014 #}
+{% if (entry.postDate|date('Y') != now|date('Y')) %}
+    {% set postDate = postDate ~ (", " ~ entry.postDate|date('Y')) %}
+{% endif %}
+
+{% for block in entry.richtext.all() %}
+
+    {% include 'matrix/richtext/_' ~ block.type %}
+
+{% endfor %}
+

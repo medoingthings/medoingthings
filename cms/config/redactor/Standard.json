@@ -1,0 +1,31 @@
+{
+	"buttons": ["formatting","|","bold","italic","|","unorderedlist","orderedlist","|","link","image","video", "html"],
+	"plugins": ["fullscreen", "pagebreak"],
+    "formatting": ["h2", "h3", "h4", "p", "code"],
+    "formattingAdd": [
+        {
+            "tag": "p",
+            "title": "Info Box",
+            "class": "_info-box"
+        },
+        {
+            "tag": "code",
+            "title": "Inline Code"
+        },
+        {
+            "tag": "code",
+            "title": "Inline Code mit Code Highlighting",
+            "class": "prettyprint"
+        },
+        {
+            "tag": "pre",
+            "title": "Code-Block"
+        },
+        {
+            "tag": "pre",
+            "title": "Code-Block mit Code Highlighting",
+            "class": "prettyprint"
+        }
+    ]
+
+}

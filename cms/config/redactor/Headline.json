@@ -1,0 +1,5 @@
+{
+	"buttons": ["formatting", "italic", "|", "html"],
+    "formatting": ["h1", "h2", "h3"],
+    "deniedTags": ["p"]
+}

@@ -1,0 +1,192 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+{% spaceless %}
+{% set headTitle = entry.title is defined and craft.app.request.segments|first  ? (entry.title) : siteName %}
+
+{% if craft.app.request.isAjax %}
+    {% header "CraftTitle: " ~ headTitle %}
+    {% header "CraftSection: " ~ craft.app.request.segments|first %}
+{% endif %}
+
+
+{# {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}#}
+
+{% endspaceless %}
+{% if (not craft.app.request.isAjax or craft.request.isLivePreview)  %}
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
+<!--[if IE 9]><html class="no-js ie9" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ headTitle }}</title>
+        {% spaceless %}
+
+        {#
+         # Meta description - if not given, fall back to a default string
+         #}
+
+        <meta name="description" content="{{ (entry.metaDescription is defined) and (entry.metaDescription) ? entry.metaDescription : defaultMetaData.metaDescription }}">
+
+        {% endspaceless %}
+
+        {% spaceless %}
+        {#
+         # Robots - prevent bots from indexing if author wants it
+         #}
+
+        {% if (entry.robots is defined) and (entry.robots | length) %}
+                {% set robotsValue = "" %}
+
+                {% for option in entry.robots %}
+
+                    {% set robotsValue = robotsValue ~ option %}
+
+                    {% if not loop.last %}
+                        {% set robotsValue = robotsValue ~ ", " %}
+                    {% endif %}
+                {% endfor %}
+
+            <meta name="robots" content="{{ robotsValue }}">
+
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ rev('dist/css/main.css') }}">
+        {% endspaceless %}
+
+        <script type="text/javascript" src="{{ rev('dist/js/modernizr.js') }}"></script>
+        <script type="text/javascript" src="{{ rev('dist/js/picturefill.min.js') }}"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% spaceless %}
+
+        {# Twitter Card #}
+        <meta name="twitter:card" value="summary">
+        <meta name="twitter:title" value="{{ headTitle }}">
+
+        {% if entry.metaDescription is defined and entry.metaDescription is not empty %}
+            <meta name="twitter:description" content="{{ entry.metaDescription }}">
+        {% endif %}
+
+        {#
+         # Facebook og:image and Twitter Card Image
+         #}
+
+        {% set imageUrl = "" %}
+
+        {# Do we have a pageImage in the entry? #}
+        {% if (entry.pageImage[0] is defined) %}
+
+            {% set imageUrl = entry.pageImage[0].url %}
+
+        {# Is a global pageImage set #}
+        {% elseif (defaultPageImage.pageImage[0] is defined) %}
+
+            {% set imageUrl = defaultPageImage.pageImage[0].url %}
+
+        {% endif %}
+
+        {# Only if we have a result #}
+        {% if (imageUrl != "") %}
+
+            <meta property="og:image" content="{{ siteUrl }}{{ imageUrl }}">
+            <meta name="twitter:image" content="{{ siteUrl }}{{ imageUrl }}">
+
+
+        {% endif %}
+
+        {% endspaceless %}
+
+        <link rel="home" href="{{ siteUrl }}">
+    </head>
+<body>
+<!--
+      ___ ___      __
+    /' __` __`\  /'__`\
+    /\ \/\ \/\ \/\  __/
+    \ \_\ \_\ \_\ \____\
+     \/_/\/_/\/_/\/____/
+
+      __
+     /\ \          __
+     \_\ \    ___ /\_\    ___      __
+     /'_` \  / __`\/\ \ /' _ `\  /'_ `\
+    /\ \_\ \/\ \_\ \ \ \/\ \/\ \/\ \_\ \
+    \ \___,_\ \____/\ \_\ \_\ \_\ \____ \
+     \/__,_ /\/___/  \/_/\/_/\/_/\/____\ \
+                                   /\____/
+                                   \_/__/
+     __    __
+    /\ \__/\ \      __
+    \ \ ,_\ \ \___ /\_\    ___      __     ____
+     \ \ \/\ \  _ `\/\ \ /' _ `\  /'_ `\  /',__\
+      \ \ \_\ \ \ \ \ \ \/\ \/\ \/\ \_\ \/\__, `\
+       \ \__\\ \_\ \_\ \_\ \_\ \_\ \____ \/\____/
+        \/__/ \/_/\/_/\/_/\/_/\/_/\/____\ \/___/
+                                    /\____/
+                                    \_/__/
+
+
+    Howdy. If you’d like to check out how things were done here, have a look at
+    https://github.com/medoingthings/medoingthings
+
+    Cheers,
+    Mark
+
+-->
+{% endif %}
+
+    {# Set a specific theme class for each section #}
+    {% set themeName = entry.section.handle|default(themeName|default('')) %}
+    <section class="layout__wrapper{{ themeName is defined ? ' theme-section--' ~ themeName }}{{ pageClass is defined ? ' ' ~ pageClass }}">
+
+        <header class="navigation-main__wrapper">
+            <nav class="navigation-main__list" role="navigation">
+                <a href="{{ siteUrl }}" class="navigation-main__link{% if craft.app.request.segments|first == '' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text doing">doing</span><span class="last">things</span></a>
+                <a href="{{ url('writing') }}" class="navigation-main__link{% if craft.app.request.segments|first == 'writing' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text writing">writing</span><span class="last">things</span></a>
+                {# <a href="{{ url('sharing') }}" class="navigation-main__link{% if craft.app.request.segments|first == 'sharing' %} is-active {% endif %}"><span class="first">me</span><span class="navigation-main__text sharing">sharing</span><span class="last">things</span></a> #}
+            </nav>
+        </header>
+
+        <div class="layout__content">
+
+
+            {% block content %}{% endblock content %}
+
+            <footer class="layout-footer__wrapper">
+                <ul class="layout-footer__list">
+                    <li class="layout-footer__item"><a href="{{ url('imprint') }}" class="layout-footer__link">imprint</a></li>
+                </ul>
+            </footer>
+        </div>
+
+        <div class="layout-triangle__wrapper">
+
+            <svg width="2209" height="1450" viewBox="0 0 2209 1450">
+                <polygon transform="translate(2045, -160) rotate(75)" class="layout-triangle__item layout-triangle__item-1" fill="#ffff33" points="625 0, 0 1082, 1250 1082"/>
+                <polygon transform="translate(382, 1007) rotate(-81)" class="layout-triangle__item layout-triangle__item-2" fill="#99ff99" points="500 0, 0 866, 1000 866"/>
+                <polygon transform="translate(508, 760) rotate(-63)" class="layout-triangle__item layout-triangle__item-3" fill="#66ffff" points="563 0, 0 975, 1126 975"/>
+                <polygon transform="translate(254, 110) rotate(14)" class="layout-triangle__item layout-triangle__item-4" fill="#66ff99" points="625 0, 0 1082, 1250 1082"/>
+            </svg>
+
+        </div>
+
+    </section>
+{% if (not craft.app.request.isAjax or craft.request.isLivePreview)  %}
+
+    <script async src="{{ rev('dist/js/medoingthings.js') }}"></script>
+
+</body>
+</html>
+
+{% endif %}
