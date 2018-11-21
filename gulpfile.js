@@ -15,7 +15,7 @@ var uglify       = require('gulp-uglify');
  * Gulp Build Tasks
  */
 
-gulp.task('default', ['copy', 'sass', 'templates', 'javascript']);
+gulp.task('default', ['copy', 'sass', 'javascript']);
 gulp.task('build', ['default', 'assets', 'modernizr']);
 
 /**
@@ -87,14 +87,8 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(gulpconfig.css.dest));
 });
 
-gulp.task('templates', function () {
-  gulp.src(gulpconfig.templates.src)
-    .pipe(gulp.dest(gulpconfig.templates.dest))
-});
-
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch(gulpconfig.sass.modules, ['sass']).on('change', livereload.changed);
-    gulp.watch(gulpconfig.templates.src, ['templates']).on('change', livereload.changed);
     gulp.watch(gulpconfig.js.src, ['javascript']).on('change', livereload.changed);
 });

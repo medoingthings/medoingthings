@@ -5,7 +5,7 @@
 module.exports = {
     assets: {
         src: 'assets/**/*.*',
-        dest: './www/public/assets'
+        dest: './cms/web/assets'
     },
     autoprefixer: {
         browsers: ['last 4 versions'],
@@ -16,15 +16,15 @@ module.exports = {
             src: [
                 'bower_components/picturefill/dist/picturefill.min.js'
             ],
-            dest: 'www/public/dist/js'
+            dest: 'cms/web/dist/js'
         }
     },
     css: {
-        dest: './www/public/dist/css'
+        dest: './cms/web/dist/css'
     },
     js: {
         src: 'modules/**/*.js',
-        dest: 'www/public/dist/js'
+        dest: 'cms/web/dist/js'
     },
     modernizr: {
         settings: {
@@ -43,9 +43,5 @@ module.exports = {
             outputStyle : 'compressed',
             errLogToConsole: true
         }
-    },
-    templates: {
-        src: 'templates/**/*.html',
-        dest: 'www/craft/templates'
     }
 }
