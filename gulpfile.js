@@ -47,7 +47,6 @@ gulp.task('javascript', function() {
             'api-talk': 'lib/js/api-talk',
             'console': 'bower_components/h5bp-console-polyfill/console',
             'requirejs': 'bower_components/requirejs/require',
-            'twitter-follow': 'lib/js/twitter-follow',
             'zeptojs': 'lib/js/zepto.min'
         },
         shim: {
@@ -56,8 +55,7 @@ gulp.task('javascript', function() {
             },
             'analytics': {
                 exports: 'ga'
-            },
-            'twitter-follow' : {}
+            }
         },
 
         // optimizer stuff
@@ -65,7 +63,6 @@ gulp.task('javascript', function() {
         include: [
             'requirejs',
             'console',
-            'twitter-follow',
             'analytics'
             ]
     })

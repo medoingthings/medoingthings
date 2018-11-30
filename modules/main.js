@@ -8,11 +8,6 @@ require(['zeptojs', 'modules/richtext/richtext-voting', 'modules/feature/feature
     $('.feature-query__wrapper').featureQuery();
     $('.feature-words__wrapper').featureWords();
 
-    // load twitter button if present
-    if ($('.twitter-follow-button').length) {
-        require(['twitter-follow']);
-    }
-
     /**
      * Draft for a little parallax scrolling
      */
