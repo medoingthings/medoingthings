@@ -17,8 +17,40 @@
             {# Richtext Matrix field #}
             {% include 'matrix/richtext/index' %}
 
-            {# Social Media Sharing #}
-            {% include 'partials/social-share' with {facebook: false} %}
+            {% set next = '' %}
+
+            {% if entry.level > 1 %}
+                {% set prev = craft.entries().prevSiblingOf(entry).one() %}
+                {% set next = craft.entries().nextSiblingOf(entry).anyStatus().one() %}
+
+                <div class="chapter">
+                    <div class="chapter__sibling">
+                    {% if next|length %}
+                        {% if next.status != 'live' %}
+                            <div class="chapter__link">
+                                {% include 'partials/social-share' with {
+                                    reason: 'More chapters coming soon, <em>follow me here</em>:',
+                                    wrapper: false
+                                }
+                                %}
+                            </div>
+                        {% else %}
+                            <a href="{{ next.url }}" data-hover="{{ next.title }}" class="chapter__link _next"><span class="chapter__sibling__hint">next chapter</span> {{ next.title }}</a>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if prev|length %}
+                        <a href="{{ prev.url }}" data-hover="{{ prev.title }}" class="chapter__link"><span class="chapter__sibling__hint">previous chapter</span> {{ prev.title }}</a>
+                    {% endif %}
+
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if next is empty or next.status == 'live' %}
+                {# Social Media Sharing #}
+                {% include 'partials/social-share' %}
+            {% endif %}
 
             {# Comment section #}
             {% include '_disqus' %}

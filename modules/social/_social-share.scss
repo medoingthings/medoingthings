@@ -3,10 +3,46 @@
  */
 
 .social-share__text {
+    float: left;
     max-width: em(380);
     margin-bottom: em($base--space-default * 2);
-    color: color(2);
-    float: left;
+    margin-right: em($base--space-default * 2);
+    font-size: size(5);
+
+    em {
+        color: color(4);
+        font-style: normal;
+    }
+}
+
+.social-share__link {
+    display: inline-block;
+    width: 40px;
+    transition: color 0.3s;
+
+    &._twitter {
+        color: color(2);
+    }
+
+    &._medium {
+        color: color(1, $colors-bw);
+    }
+
+    &,
+    &:link,
+    &:active,
+    &:hover {
+        box-shadow: none !important;
+    }
+
+    &:hover,
+    &:focus {
+        color: color(6);
+    }
+
+    svg {
+        width: 100%;
+    }
 }
 
 .social-share__list {

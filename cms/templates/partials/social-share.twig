@@ -1,16 +1,22 @@
-{% set reason = reason|default('Liked this? Let’s stay in touch.') %}
+{% set reason = reason|default('If you liked this, we should stay in touch. <em>Follow me here</em>:') %}
 {% set twitter = twitter is defined ? twitter : true %}
+{% set medium = medium is defined ? medium : true %}
+{% set wrapper = wrapper is defined ? wrapper : true %}
 
+
+{% if wrapper %}
 <div class="social-share__wrapper">
-    <p class="social-share__text">{{ reason }}</p>
+{% endif %}
+    <p class="social-share__text">{{ reason|raw }}</p>
 
     <div class="social-share__list">
 
-        {% if twitter == true %}
-            <div class="social-share__item">
-                <a href="https://twitter.com/medoingthings" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @medoingthings</a>
-            </div>
-        {% endif %}
+        <p class="social-share__item">
+            <a href="https://medium.com/@medoingthings" target="_blank" title="Medium" class="social-share__link _medium"><svg aria-hidden="true" data-prefix="fab" data-icon="medium" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-medium fa-w-14 fa-3x"><path fill="currentColor" d="M0 32v448h448V32H0zm372.2 106.1l-24 23c-2.1 1.6-3.1 4.2-2.7 6.7v169.3c-.4 2.6.6 5.2 2.7 6.7l23.5 23v5.1h-118V367l24.3-23.6c2.4-2.4 2.4-3.1 2.4-6.7V199.8l-67.6 171.6h-9.1L125 199.8v115c-.7 4.8 1 9.7 4.4 13.2l31.6 38.3v5.1H71.2v-5.1l31.6-38.3c3.4-3.5 4.9-8.4 4.1-13.2v-133c.4-3.7-1-7.3-3.8-9.8L75 138.1V133h87.3l67.4 148L289 133.1h83.2v5z" class=""></path></svg></a>
+            <a href="https://twitter.com/medoingthings" target="_blank" title="Twitter" class="social-share__link _twitter"><svg aria-hidden="true" data-prefix="fab" data-icon="twitter-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-twitter-square fa-w-14 fa-3x"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z" class=""></path></svg></a>
+        </p>
 
     </div>
+{% if wrapper %}
 </div>
+{% endif %}

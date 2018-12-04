@@ -1,0 +1,119 @@
+.chapter {
+    max-width: em(800px);
+    margin: 0 auto em($base--space-default * 4);
+}
+
+.chapter__notice {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: size(5);
+}
+
+.chapter__headline {
+    margin: ($base--space-default * 3) 0 $base--space-default;
+    padding: 0 $base--space-default;
+    font-size: size(4);
+}
+
+.chapter__description {
+    margin-bottom: 10px !important;
+}
+
+.chapter__list {
+    margin-bottom: em($base--space-default * 2);
+}
+
+.chapter__item {
+    border-bottom: 1px solid color(5, $colors-bw);
+
+    &:first-child {
+        border-top: 1px solid color(5, $colors-bw);
+    }
+}
+
+.chapter__link {
+    position: relative;
+    display: block;
+    font-size: size(5);
+    font-weight: bold;
+    line-height: 1.4;
+    box-shadow: none !important;
+
+    &,
+    &:after {
+        padding: ($base--space-default / 2) $base--space-default;
+    }
+
+    &:nth-child(n):after {
+        color: color(1);
+    }
+
+    &:nth-child(2n):after {
+        color: color(2);
+    }
+
+    &:nth-child(3n):after {
+        color: color(5);
+    }
+
+    &:after {
+        content: attr(data-hover);
+        speak: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        clip-path: polygon(120% 80%, 120% 900%, 120% 70%);
+        transition: all 0.3s;
+        width: 100%;
+    }
+
+    &[href]:link,
+    &[href]:visited,
+    &[href]:active {
+        color: color(6);
+    }
+
+    &:hover,
+    &:focus {
+        &:after {
+            clip-path: polygon(10% 30%, 50% 90%, 100% 25%);
+        }
+    }
+
+    &._disabled {
+        cursor: default;
+        color: color(4, $colors-bw);
+    }
+}
+
+.chapter__sibling__hint {
+    display: block;
+    text-transform: uppercase;
+    font-size: size(5);
+    font-weight: bold;
+    color: color(1);
+}
+
+.chapter__sibling__link {
+    position: relative;
+    box-shadow: none !important;
+
+    &:link,
+    &:active,
+    &:visited {
+        color: color(6);
+    }
+}
+
+@include breakpoint(650) {
+    .chapter__link._next {
+        text-align: right;
+    }
+
+    .chapter__sibling {
+        display: flex;
+        align-items: start;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+}

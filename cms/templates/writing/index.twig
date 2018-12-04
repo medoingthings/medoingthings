@@ -11,7 +11,7 @@
     <section class="row-triangle__wrapper">
         <div class="row-triangle__content">
 
-            {% for entry in craft.entries.section('writing').all() %}
+            {% for entry in craft.entries.section('writing').level(1).all() %}
 
                 {% set postDate = entry.postDate | date("F jS") %}
 
@@ -21,15 +21,19 @@
 
                     <ul class="teaser-compact__list theme-article--{{ entry.id }}">
                         <li class="teaser-compact__item">
+                            <div>
                             <a href="{{ entry.url }}" class="teaser-compact__link">
                                 <div class="_heading">
                                     {{ entry.teaserHeadline }}
                                     <p class="teaser-compact__date">{{ postDate }}</p>
                                 </div>
                             </a>
-                            <p class="teaser-compact__text">
-                                {{ entry.metaDescription }}
-                            </p>
+                            </div>
+                            <div>
+                                <p class="teaser-compact__text">
+                                    {{ entry.metaDescription }}
+                                </p>
+                            </div>
                         </li>
                     </ul>
 
