@@ -1,3 +1,4 @@
 {
-    "buttons": ["bold", "italic", "link", "|", "html"]
+    "buttons": ["bold", "italic", "link", "|", "html"],
+    "linkNewTab": true
 }
