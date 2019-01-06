@@ -1,9 +1,9 @@
 {
   "require": {
-    "craftcms/cms": "^3.0.0",
+    "craftcms/cms": "3.0.36",
     "vlucas/phpdotenv": "^2.4.0",
-    "clubstudioltd/craft-asset-rev": "v6.0.1",
-    "craftcms/redactor": "2.1.5"
+    "clubstudioltd/craft-asset-rev": "v6.0.2",
+    "craftcms/redactor": "2.1.7"
   },
   "autoload": {
     "psr-4": {
