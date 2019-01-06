@@ -3,3 +3,4 @@ www
 node_modules
 bower_components
 cms/web/dist
+cms/web/assets/images
