@@ -13,6 +13,9 @@
 
 .feature-words {
     pointer-events: none;
+
+    // Prevent it from not being rendered at first
+    transform: translateZ(0);
 }
 
 .feature-words__wrapper {
