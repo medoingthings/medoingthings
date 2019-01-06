@@ -41,6 +41,9 @@
 
                     {% if prev|length %}
                         <a href="{{ prev.url }}" data-hover="{{ prev.title }}" class="chapter__link"><span class="chapter__sibling__hint">previous chapter</span> {{ prev.title }}</a>
+                    {% else %}
+                        {% set ancestor = craft.entries().ancestorOf(entry).one() %}
+                        <a href="{{ ancestor.url }}" data-hover="{{ ancestor.title }}" class="chapter__link"><span class="chapter__sibling__hint">intro</span> {{ ancestor.title }}</a>
                     {% endif %}
 
                     </div>
