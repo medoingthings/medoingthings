@@ -18,12 +18,12 @@
                 </a>
             </div>
 
-            {% set blocks = entry.ixShuffleHeadline.type("journey") %}
+            {% set blocks = entry.ixShuffleHeadline.type("journey").order('RAND()').all() %}
             {% set i = 0 %}
 
             {% if blocks | length %}
 
-                {% for block in blocks.all() %}
+                {% for block in blocks %}
 
                     {% set i = i + 1 %}
 
