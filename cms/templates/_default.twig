@@ -8,7 +8,6 @@
  # See Twig’s Template Inheritance documentation for more details:
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
-{% spaceless %}
 {% set headTitle = entry.title is defined and craft.app.request.segments|first  ? (entry.title) : siteName %}
 
 {% if craft.app.request.isAjax %}
@@ -16,10 +15,6 @@
     {% header "CraftSection: " ~ craft.app.request.segments|first %}
 {% endif %}
 
-
-{# {% if title is defined %}{{ title }} - {% endif %}{{ siteName }}#}
-
-{% endspaceless %}
 {% if (not craft.app.request.isAjax or craft.request.isLivePreview)  %}
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
@@ -31,17 +26,49 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ headTitle }}</title>
-        {% spaceless %}
 
         {#
          # Meta description - if not given, fall back to a default string
          #}
 
-        <meta name="description" content="{{ (entry.metaDescription is defined) and (entry.metaDescription) ? entry.metaDescription : defaultMetaData.metaDescription }}">
+        {% set description = entry.metaDescription is defined and entry.metaDescription ? entry.metaDescription : defaultMetaData.metaDescription %}
 
-        {% endspaceless %}
+        {#
+         # Facebook og:image and Twitter Card Image
+         #}
 
-        {% spaceless %}
+        {% set socialImageUrl = "" %}
+
+        {# Do we have a pageImage in the entry? #}
+        {% if (entry.pageImage[0] is defined) %}
+
+            {% set socialImageUrl = entry.pageImage[0].url %}
+
+        {# Is a global pageImage set #}
+        {% elseif (defaultPageImage.pageImage[0] is defined) %}
+
+            {% set socialImageUrl = defaultPageImage.pageImage[0].url %}
+
+        {% endif %}
+
+        <meta name="description" content="{{ description }}">
+        <meta property="og:type" content="article">
+        <meta property="og:site_name" content="{{ siteName }}">
+        <meta property="og:url" content="{{ entry.url }}">
+        <meta property="og:title" content="{{ headTitle }}">
+        <meta property="og:description" content="{{ description }}">
+        <meta property="og:locale" content="en">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="{{ entry.url }}">
+        <meta name="twitter:title" content="{{ headTitle }}">
+        <meta name="twitter:description" content="{{ description }}">
+
+        {# Only if we have a result #}
+        {% if (socialImageUrl != "") %}
+            <meta property="og:image" content="{{ siteUrl }}{{ socialImageUrl }}">
+            <meta name="twitter:image" content="{{ siteUrl }}{{ socialImageUrl }}">
+        {% endif %}
+
         {#
          # Robots - prevent bots from indexing if author wants it
          #}
@@ -63,12 +90,10 @@
         {% endif %}
 
         <link rel="stylesheet" href="{{ rev('dist/css/main.css') }}">
-        {% endspaceless %}
 
         <script type="text/javascript" src="{{ rev('dist/js/modernizr.js') }}"></script>
         <script type="text/javascript" src="{{ rev('dist/js/picturefill.min.js') }}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% spaceless %}
 
         {# Twitter Card #}
         <meta name="twitter:card" value="summary">
@@ -77,36 +102,6 @@
         {% if entry.metaDescription is defined and entry.metaDescription is not empty %}
             <meta name="twitter:description" content="{{ entry.metaDescription }}">
         {% endif %}
-
-        {#
-         # Facebook og:image and Twitter Card Image
-         #}
-
-        {% set imageUrl = "" %}
-
-        {# Do we have a pageImage in the entry? #}
-        {% if (entry.pageImage[0] is defined) %}
-
-            {% set imageUrl = entry.pageImage[0].url %}
-
-        {# Is a global pageImage set #}
-        {% elseif (defaultPageImage.pageImage[0] is defined) %}
-
-            {% set imageUrl = defaultPageImage.pageImage[0].url %}
-
-        {% endif %}
-
-        {# Only if we have a result #}
-        {% if (imageUrl != "") %}
-
-            <meta property="og:image" content="{{ siteUrl }}{{ imageUrl }}">
-            <meta name="twitter:image" content="{{ siteUrl }}{{ imageUrl }}">
-
-
-        {% endif %}
-
-        {% endspaceless %}
-
         <link rel="home" href="{{ siteUrl }}">
     </head>
 <body>
